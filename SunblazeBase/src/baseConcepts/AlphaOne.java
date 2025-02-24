@@ -78,6 +78,8 @@ public class AlphaOne {
 		String[] stringToArray = stringInt.split("(?<=.)");
 		int[] stringToIntArray = Arrays.stream(stringToArray).mapToInt(Integer::parseInt).toArray();
 		//Get Minimum and Maximum values from an Array
+		int minArray = Arrays.stream(integerArray).min().getAsInt();
+		int maxArray = Arrays.stream(integerArray).max().getAsInt();
 		
 		//If statement
 		boolean condition = false;
@@ -103,9 +105,15 @@ public class AlphaOne {
 		//Integers
 		
 		//OOP
+		//Public method requires Instance of Class
 		AlphaTwo _alphaTwo = new AlphaTwo();
 		int alphaTwoIntSum = _alphaTwo.SumIntArray(integerArray);
-		
+		//Static method does not require Instance of Class
+		int alphaTwoIntAverage = AlphaTwo.AverageIntArray(integerArray);
+		//Create instance of Inner Class, must be static
+		AlphaTwo.InnerAlphaTwo _innerAlphaTwo = new AlphaTwo.InnerAlphaTwo();
+		int innerAlphaTwoIntMin = _innerAlphaTwo.MinIntArray(integerArray);
+		_innerAlphaTwo.InnerAlphaTwoSet();
 		
 		//Strings
 		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
@@ -123,9 +131,14 @@ public class AlphaOne {
 		System.out.println("Joined Array is '" + joinedArray + "'");
 		System.out.println("Reversed Array is '" + String.join(" ", reverseArray) + "'");
 		System.out.println("Split '" + stringInt + "' to Int Array '" + Arrays.toString(stringToIntArray) + "'");
+		System.out.println(String.format("Minimum value of Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
 		
 		//OOP
-		System.out.println(String.format("After creating instance of Class AlphaTwo, using its method SumIntArray to calculate sum of '%s' is %d", Arrays.toString(stringToIntArray), alphaTwoIntSum));
+		System.out.println(String.format("After creating instance of Class AlphaTwo, using its method SumIntArray to calculate sum of '%s' is %d", Arrays.toString(integerArray), alphaTwoIntSum));
+		System.out.println(String.format("Static method of Class AlphaTwo AverageIntArray used to calculate average of '%s' is %d", Arrays.toString(integerArray), alphaTwoIntAverage));
+		_alphaTwo.VoidAlphaTwo();
+		System.out.println(String.format("Method of Inner Class InnerAlphaTwo MinIntArray used to retrieve minimum value of '%s' is %d", Arrays.toString(integerArray), innerAlphaTwoIntMin));
+		_innerAlphaTwo.InnerAlphaTwoGet();
 	}
 
 }
