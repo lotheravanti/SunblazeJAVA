@@ -30,10 +30,6 @@ public class AlphaOne {
 		var varInteger = new int[]{1, 2, 3, 4, 5};
 		
 		//Integer Operations
-		//Split String into Integer Array, split to String Array(with REGEX), then convert into Integer Array
-		String stringInt = "549713";
-		String[] stringToArray = stringInt.split("(?<=.)");
-		int[] stringToIntArray = Arrays.stream(stringToArray).mapToInt(Integer::parseInt).toArray();
 		
 		//String Operations
 		String stringValue = "lower case text";
@@ -45,6 +41,8 @@ public class AlphaOne {
 		StringBuilder reverseString = new StringBuilder().append(stringValue).reverse();
 		//Replace part of String
 		String replacedMessage = message.replace("One", "Prime");
+		//Get first N characters of a String
+		String firstOfString = stringValue.substring(0,1);
 		//Get last N characters of a String
 		String lastOfString = stringValue.substring(stringValue.length() - 3);
 		//Remove First and Last characters of String
@@ -74,6 +72,12 @@ public class AlphaOne {
 		//Reverse Array method in JAVA permanently reverses Array, so can't use original
 		String[] reverseArray = stringArray;
 		Collections.reverse(Arrays.asList(reverseArray));
+		//Count occurrences in Array
+		//Split String into Integer Array, split to String Array(with REGEX), then convert into Integer Array
+		String stringInt = "549713";
+		String[] stringToArray = stringInt.split("(?<=.)");
+		int[] stringToIntArray = Arrays.stream(stringToArray).mapToInt(Integer::parseInt).toArray();
+		//Get Minimum and Maximum values from an Array
 		
 		//If statement
 		boolean condition = false;
@@ -92,14 +96,23 @@ public class AlphaOne {
 		      condition = true;
 		    }
 		
+		//For Loops
+		//For index in Array
+		//For item in Array
+		
 		//Integers
-		System.out.println("Split '" + stringInt + "' to Int Array '" + Arrays.toString(stringToIntArray) + "'");
+		
+		//OOP
+		AlphaTwo _alphaTwo = new AlphaTwo();
+		int alphaTwoIntSum = _alphaTwo.SumIntArray(integerArray);
+		
 		
 		//Strings
-		//No F String method exists for JAVA
-		System.out.println("String length for '" + stringValue + "' is " + lengthString);
+		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
+		System.out.println(String.format("String length for '%s' is %d", stringValue, lengthString));
 		System.out.println("Reversed String is '" + reverseString + "'");
-		System.out.println("Stripping last 3 characters from '" + stringValue + "' results in '" + lastOfString + "'");
+		System.out.println("First character from '" + stringValue + "' is '" + firstOfString + "'");
+		System.out.println("Last 3 characters from '" + stringValue + "' are '" + lastOfString + "'");
 		System.out.println("Removing first and last characters from '" + stringValue + "' results in '" + removeFirstLast + "'");
 		System.out.println("'" + stringAlphabet + "' contains only alphabet characters: " + checkAlphabet);
 		System.out.println(replacedMessage + " starts with Alpha: " + startsWith + " and ends with Initialized: " + endsWith);
@@ -109,6 +122,10 @@ public class AlphaOne {
 		//Arrays
 		System.out.println("Joined Array is '" + joinedArray + "'");
 		System.out.println("Reversed Array is '" + String.join(" ", reverseArray) + "'");
+		System.out.println("Split '" + stringInt + "' to Int Array '" + Arrays.toString(stringToIntArray) + "'");
+		
+		//OOP
+		System.out.println(String.format("After creating instance of Class AlphaTwo, using its method SumIntArray to calculate sum of '%s' is %d", Arrays.toString(stringToIntArray), alphaTwoIntSum));
 	}
 
 }
