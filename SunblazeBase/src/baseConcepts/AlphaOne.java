@@ -38,7 +38,7 @@ public class AlphaOne {
 		//Convert to Upper Case
 		String upperCase = stringValue.toUpperCase();
 		//Reverse String
-		StringBuilder reverseString = new StringBuilder().append(stringValue).reverse();
+		String reverseString = new StringBuilder().append(stringValue).reverse().toString();
 		//Replace part of String
 		String replacedMessage = message.replace("One", "Prime");
 		//Get first N characters of a String
@@ -101,6 +101,29 @@ public class AlphaOne {
 		//For Loops
 		//For index in Array
 		//For item in Array
+	    //Count number of matching characters in a String
+	    String matchingString = "We will count the number of vowels";
+	    int countMatchingString = 0;
+	    String[] matchingStringArray = matchingString.split("(?<=.)");
+	    for (int i = 0; i < matchingStringArray.length; i++){
+	    	//Using .matches() with expression to count all vowels
+	    	if (matchingStringArray[i].matches(".*(a|e|i|o|u).*")){
+	    		countMatchingString += 1;
+	    		}
+	    	}
+	    
+		//While Loops
+		//Calculate number of divisors in a number, example: 30 has 1, 2, 3, 5, 6, 10, 15 and 30
+	    int intDivisors = 30;
+		int numberOfDivisors = 1;
+	    int whileIterator = 1;
+	    while(whileIterator < intDivisors){
+	    	//Check if number can be divided by iterator
+	    	if(intDivisors % whileIterator == 0){
+		        numberOfDivisors += 1;
+		      }
+		      whileIterator += 1;
+		    }
 		
 		//Integers
 		
@@ -121,8 +144,9 @@ public class AlphaOne {
 		
 		//Strings
 		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
+		System.out.println(String.format("Strings"));
 		System.out.println(String.format("String length for '%s' is %d", stringValue, lengthString));
-		System.out.println("Reversed String is '" + reverseString + "'");
+		System.out.println(String.format("Reversed String is '%s'", reverseString));
 		System.out.println("First character from '" + stringValue + "' is '" + firstOfString + "'");
 		System.out.println("Last 3 characters from '" + stringValue + "' are '" + lastOfString + "'");
 		System.out.println("Removing first and last characters from '" + stringValue + "' results in '" + removeFirstLast + "'");
@@ -132,19 +156,31 @@ public class AlphaOne {
 		System.out.println("'" + lowerString + "' is all Lower Case: " + isLower);
 		
 		//Arrays
+		System.out.println(String.format("%nArrays"));
 		System.out.println("Joined Array is '" + joinedArray + "'");
 		System.out.println("Reversed Array is '" + String.join(" ", reverseArray) + "'");
 		System.out.println("Split '" + stringInt + "' to Int Array '" + Arrays.toString(stringToIntArray) + "'");
 		System.out.println(String.format("Minimum value of Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
 		
+		//For Loops
+		System.out.println(String.format("%nFor Loops"));
+		System.out.println(String.format("The number of vowels in '%s' is %d", matchingString, countMatchingString));
+		
+		//While Loops
+		System.out.println(String.format("%nWhile Loops"));
+		System.out.println(String.format("The number %d has %d divisors", intDivisors, numberOfDivisors));
+		
 		//OOP
+		System.out.println(String.format("%nOOP"));
 		System.out.println(String.format("After creating instance of Class AlphaTwo, using its method SumIntArray to calculate sum of '%s' is %d", Arrays.toString(integerArray), alphaTwoIntSum));
 		System.out.println(String.format("Static method of Class AlphaTwo AverageIntArray used to calculate average of '%s' is %d", Arrays.toString(integerArray), alphaTwoIntAverage));
 		_alphaTwo.VoidAlphaTwo();
+		System.out.println(String.format("Method overloading from Class AlphaTwo of ReverseString Method using second parameter returns '%s'", _alphaTwo.ReverseString(_alphaTwo.outerAlphaTwoString, _alphaTwo.overLoadString)));
 		System.out.println(String.format("Method of Inner Class InnerAlphaTwo MinIntArray used to retrieve minimum value of '%s' is %d", Arrays.toString(integerArray), innerAlphaTwoIntMin));
 		_innerAlphaTwo.InnerAlphaTwoGet();
 		System.out.println(String.format("Array Field from AlphaTwo is '%s', from AlphaTwoSub is '%s'", Arrays.toString(_alphaTwo.alphaTwoIntArray), Arrays.toString(_alphaTwoSub.alphaTwoIntArray)));
 		System.out.println(String.format("AlphaTwoSub is a Subclass and has inherited SumIntArray from AlphaTwo to sum '%s' resulting in %d", Arrays.toString(_alphaTwo.alphaTwoIntArray), alphaTwoSubIntSum));
+		System.out.println(String.format("AlphaTwoSub's String has been reversed using Base Class' Method: '%s'", _alphaTwoSub.alphaTwoSubString));
 	}
 
 }

@@ -9,6 +9,7 @@ public class AlphaTwo {
 	String outerAlphaTwoString;
 	static String staticAlphaTwoString;
 	int[] alphaTwoIntArray = {1,2,3,4,0};
+	String overLoadString = "OVERLOADED";
 	
 	//Constructor
 	AlphaTwo(){
@@ -33,6 +34,14 @@ public class AlphaTwo {
 	public void VoidAlphaTwo()
 	{
 		System.out.println(String.format("AlphaTwo's Void method returned: %s", outerAlphaTwoString));
+	}
+	//Method is static here so it can be used in AlphaTwoSub's initialization
+	public static String ReverseString(String s) {
+		return new StringBuilder().append(s).reverse().toString();
+	}
+	//Method overloading, using same name but differing number of parameters
+	public String ReverseString(String s, String overLoad) {
+		return overLoad + new StringBuilder().append(s).reverse().toString();
 	}
 	
 	//Inner Class can be static in JAVA
