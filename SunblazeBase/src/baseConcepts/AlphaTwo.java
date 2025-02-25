@@ -2,11 +2,13 @@ package baseConcepts;
 
 import java.util.Arrays;
 
+//Superclass/Base Class
 public class AlphaTwo {
 	
-	//Properties
+	//Fields/Properties
 	String outerAlphaTwoString;
 	static String staticAlphaTwoString;
+	int[] alphaTwoIntArray = {1,2,3,4,0};
 	
 	//Constructor
 	AlphaTwo(){
@@ -14,6 +16,7 @@ public class AlphaTwo {
 		this.outerAlphaTwoString = "This is AlphaTwo's String";
 		//Static variable can be used by Inner Class
 		staticAlphaTwoString = "This is AlphaTwo's Static String and can be used in Inner Class";
+		this.alphaTwoIntArray[4] = 5;
 	}
 	
 	//Methods

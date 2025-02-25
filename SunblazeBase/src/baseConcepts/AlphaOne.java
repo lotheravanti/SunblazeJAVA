@@ -114,6 +114,10 @@ public class AlphaOne {
 		AlphaTwo.InnerAlphaTwo _innerAlphaTwo = new AlphaTwo.InnerAlphaTwo();
 		int innerAlphaTwoIntMin = _innerAlphaTwo.MinIntArray(integerArray);
 		_innerAlphaTwo.InnerAlphaTwoSet();
+		//Create instance of Subclass(shorthand)
+		AlphaTwoSub _alphaTwoSub = new AlphaTwoSub();
+		//Subclass inherits method from Superclass
+		int alphaTwoSubIntSum = _alphaTwoSub.SumIntArray(_alphaTwoSub.alphaTwoIntArray);
 		
 		//Strings
 		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
@@ -139,6 +143,8 @@ public class AlphaOne {
 		_alphaTwo.VoidAlphaTwo();
 		System.out.println(String.format("Method of Inner Class InnerAlphaTwo MinIntArray used to retrieve minimum value of '%s' is %d", Arrays.toString(integerArray), innerAlphaTwoIntMin));
 		_innerAlphaTwo.InnerAlphaTwoGet();
+		System.out.println(String.format("Array Field from AlphaTwo is '%s', from AlphaTwoSub is '%s'", Arrays.toString(_alphaTwo.alphaTwoIntArray), Arrays.toString(_alphaTwoSub.alphaTwoIntArray)));
+		System.out.println(String.format("AlphaTwoSub is a Subclass and has inherited SumIntArray from AlphaTwo to sum '%s' resulting in %d", Arrays.toString(_alphaTwo.alphaTwoIntArray), alphaTwoSubIntSum));
 	}
 
 }
