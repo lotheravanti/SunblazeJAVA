@@ -22,14 +22,24 @@ public class AlphaOne {
 		//Non Primitives
 		//Double quotes for String
 		String message = "Alpha One Initialized";
-		//Arrays
+		//Array
 		int[] integerArray = {1, 2, 3, 4, 5, 6, 7};
-		String[] stringArray = {"This", "is", "an", "Array", "from", "a", "String."};
+		String[] stringArray = {"This", "is", "a", "String", "Array."};
 		//Implicit variable declaration can only be done inside a Method(main here)
 		var varString = "varString";
 		var varInteger = new int[]{1, 2, 3, 4, 5};
+		//List
+		//Tuple
+		//Set
+		Set<String> hashSet = new HashSet<>();
+		//Use TreeSet for a Sorted Set
+		Set<String> sortedSet = new TreeSet<>();
+		//Dictionary
 		
 		//Integer Operations
+		//Convert String to Integer
+		String stringNumber = "12345";
+		int intStringNumber = Integer.parseInt(stringNumber);
 		
 		//String Operations
 		String stringValue = "lower case text";
@@ -58,6 +68,12 @@ public class AlphaOne {
 		boolean isUpper = upperString.equals(upperString.toUpperCase());
 		String lowerString = "alllower";
 		boolean isLower = lowerString.equals(lowerString.toLowerCase());
+		//String can be broken down into Characters
+		String stringCharacters = "thisisacharacterstring";
+		//Generate String of unique characters
+		StringBuilder charactersFromStringDistinct = stringCharacters.chars().distinct().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append);
+		//Generate String of sorted characters
+		StringBuilder charactersFromStringSorted = stringCharacters.chars().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append);
 		
 		//Array Operations
 		//Get length of Array
@@ -67,21 +83,40 @@ public class AlphaOne {
 		fixedArray[2] = 10;
 		//Create Two Dimensional Array
 		int[][] twoDimArray = {{1, 2}, {3, 4}, {5, 6}};
+		//Generate Array from String
+		String stringToArray = "This is an Array from a String.";
+		String[] arrayFromString = stringToArray.split(" ");
 		//Generate String from Array with delimiter
 		String joinedArray = String.join(" ", stringArray);
-		//Reverse Array method in JAVA permanently reverses Array, so can't use original
-		String[] reverseArray = stringArray;
+		//In JAVA use .clone() to create a new variable, otherwise the original will be affected
+		String[] reverseArray = stringArray.clone();
 		Collections.reverse(Arrays.asList(reverseArray));
 		//Count occurrences in Array
 		//Split String into Integer Array, split to String Array(with REGEX), then convert into Integer Array
 		String stringInt = "549713";
-		String[] stringToArray = stringInt.split("(?<=.)");
-		int[] stringToIntArray = Arrays.stream(stringToArray).mapToInt(Integer::parseInt).toArray();
+		String[] stringIntToArray = stringInt.split("(?<=.)");
+		int[] stringToIntArray = Arrays.stream(stringIntToArray).mapToInt(Integer::parseInt).toArray();
 		//Get Minimum and Maximum values from an Array
 		int minArray = Arrays.stream(integerArray).min().getAsInt();
 		int maxArray = Arrays.stream(integerArray).max().getAsInt();
+		//Sort an Array, cloning original so it isn't affected
+		int[] unsortedArray = {9,5,2,7,1,8,3,4};
+		int[] sortedArray = unsortedArray.clone();
+		Arrays.sort(sortedArray);
 		
-		//If statement
+		//Set Operations
+		//Sets don't allow for duplicate items, can be used to get number of unique occurrences
+		String stringForSet = "aretheyhereyestheyarehere";
+		String[] stringForSetArray = stringForSet.split("(?<=.)");
+		//Add one by one from Array
+		for(String s: stringForSetArray) {
+	    	hashSet.add(s);
+	    }
+		//Add all from Array at once
+		Collections.<String>addAll(sortedSet, stringForSetArray);
+		
+		//Conditionals
+		//If Else Statement
 		boolean condition = false;
 		if (integerArray[0] == 1){
 		      condition = true;
@@ -97,10 +132,40 @@ public class AlphaOne {
 		if (integerArray[0] == 1 || integerArray[1] == 2){
 		      condition = true;
 		    }
+		//Switch
+		String switchString = "Green Light";
+		String waitForSwitch = "";
+		switch (switchString) {
+		case "Yellow Light":
+			waitForSwitch = "Wait for Red Light";
+			break;
+		case "Red Light":
+			waitForSwitch = "Wait for Green Light";
+			break;
+		default:
+			waitForSwitch = "Wait for Yellow Light";
+		}
+		//In JAVA, when comparing two Strings use .equals() and not == or it will check if it's the same object in memory
+		String verifyString1 = "checkthis";
+		String verifyString2 = "checkthis";
+		boolean verifiedString = false;
+		if (verifyString1.equals(verifyString2)) {
+			verifiedString = true;
+		}
 		
 		//For Loops
 		//For index in Array
+		int forLoopCount = 0;
+		for (int i = 0; i < integerArray.length; i++)
+		{
+		    forLoopCount += integerArray[i];
+		}
 		//For item in Array
+		String forEachString = "";
+		for (String s: stringArray)
+		{
+		    forEachString += s;
+		}
 	    //Count number of matching characters in a String
 	    String matchingString = "We will count the number of vowels";
 	    int countMatchingString = 0;
@@ -125,8 +190,6 @@ public class AlphaOne {
 		      whileIterator += 1;
 		    }
 		
-		//Integers
-		
 		//OOP
 		//Public method requires Instance of Class
 		AlphaTwo _alphaTwo = new AlphaTwo();
@@ -142,28 +205,47 @@ public class AlphaOne {
 		//Subclass inherits method from Superclass
 		int alphaTwoSubIntSum = _alphaTwoSub.SumIntArray(_alphaTwoSub.alphaTwoIntArray);
 		
+		//Integers
+		System.out.println(String.format("Integers"));
+		System.out.println(String.format("Converting String '%s' to Integer: %d", stringNumber, intStringNumber));
+		
 		//Strings
 		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
-		System.out.println(String.format("Strings"));
+		System.out.println(String.format("%nStrings"));
 		System.out.println(String.format("String length for '%s' is %d", stringValue, lengthString));
 		System.out.println(String.format("Reversed String is '%s'", reverseString));
 		System.out.println("First character from '" + stringValue + "' is '" + firstOfString + "'");
 		System.out.println("Last 3 characters from '" + stringValue + "' are '" + lastOfString + "'");
 		System.out.println("Removing first and last characters from '" + stringValue + "' results in '" + removeFirstLast + "'");
 		System.out.println("'" + stringAlphabet + "' contains only alphabet characters: " + checkAlphabet);
-		System.out.println(replacedMessage + " starts with Alpha: " + startsWith + " and ends with Initialized: " + endsWith);
+		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));
 		System.out.println("'" + upperString + "' is all Upper Case: " + isUpper);
 		System.out.println("'" + lowerString + "' is all Lower Case: " + isLower);
+		System.out.println(String.format("Breaking down String '%s' and returning all distinct values results in '%s'", stringCharacters, charactersFromStringDistinct));
+		System.out.println(String.format("Breaking down String '%s' and returning sorted values results in '%s'", stringCharacters, charactersFromStringSorted));
 		
 		//Arrays
 		System.out.println(String.format("%nArrays"));
+		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
 		System.out.println("Joined Array is '" + joinedArray + "'");
 		System.out.println("Reversed Array is '" + String.join(" ", reverseArray) + "'");
 		System.out.println("Split '" + stringInt + "' to Int Array '" + Arrays.toString(stringToIntArray) + "'");
 		System.out.println(String.format("Minimum value of Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
+		System.out.println(String.format("Unsorted Array is '%s', sorted Array is '%s'", Arrays.toString(unsortedArray), Arrays.toString(sortedArray)));
+		
+		//Sets
+		System.out.println(String.format("%nSets"));
+		System.out.println(String.format("Unique letters in String '%s' are '%s'", stringForSet, String.join("", hashSet)));
+		System.out.println(String.format("Unique and sorted letters in String '%s' are '%s'", stringForSet, String.join("", sortedSet)));
+		
+		//Conditionals
+		System.out.println(String.format("%nConditionals"));
+		System.out.println(String.format("Verified if String '%s' is the same as '%s': %b", verifyString1, verifyString2, verifiedString));
 		
 		//For Loops
 		System.out.println(String.format("%nFor Loops"));
+		System.out.println(String.format("Using Index For Loop to count Array '%s' returns %d", Arrays.toString(integerArray), forLoopCount));
+		System.out.println(String.format("Using Foreach Loop on every element in Array '%s' returns the following String '%s'", String.join(" ", stringArray), forEachString));
 		System.out.println(String.format("The number of vowels in '%s' is %d", matchingString, countMatchingString));
 		
 		//While Loops
