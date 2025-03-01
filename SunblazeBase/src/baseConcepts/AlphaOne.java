@@ -10,6 +10,7 @@ public class AlphaOne {
 		
 		//Primitives
 		int integer = 16;
+		int secondInteger = 3;
 		double decimal = 12.45;
 		float realNumber = 3.1417639f;
 		long largeNumber = 100000000000L;
@@ -41,7 +42,7 @@ public class AlphaOne {
 		String stringNumber = "12345";
 		int intStringNumber = Integer.parseInt(stringNumber);
 		//Get difference between two numbers
-		int differenceInteger = Math.abs(character);
+		int differenceInteger = Math.abs(character - secondInteger);
 		
 		//String Operations
 		String stringValue = "lower case text";
