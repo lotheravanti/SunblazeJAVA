@@ -9,7 +9,7 @@ public class AlphaOne {
 		// TODO Auto-generated method stub
 		
 		//Primitives
-		int integer = 10;
+		int integer = 16;
 		double decimal = 12.45;
 		float realNumber = 3.1417639f;
 		long largeNumber = 100000000000L;
@@ -40,6 +40,12 @@ public class AlphaOne {
 		//Convert String to Integer
 		String stringNumber = "12345";
 		int intStringNumber = Integer.parseInt(stringNumber);
+		//Round down
+		double roundDownInt = Math.floor(realNumber);
+		//Round up
+		double roundUpInt = Math.ceil(realNumber);
+		//Check if number is a perfect square
+		double squareRootInt = Math.sqrt(integer);
 		
 		//String Operations
 		String stringValue = "lower case text";
