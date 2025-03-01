@@ -9,7 +9,7 @@ public class AlphaOne {
 		// TODO Auto-generated method stub
 		
 		//Primitives
-		int integer = 10;
+		int integer = 16;
 		double decimal = 12.45;
 		float realNumber = 3.1417639f;
 		long largeNumber = 100000000000L;
@@ -40,6 +40,8 @@ public class AlphaOne {
 		//Convert String to Integer
 		String stringNumber = "12345";
 		int intStringNumber = Integer.parseInt(stringNumber);
+		//Get difference between two numbers
+		int differenceInteger = Math.abs(character);
 		
 		//String Operations
 		String stringValue = "lower case text";
@@ -103,6 +105,13 @@ public class AlphaOne {
 		int[] unsortedArray = {9,5,2,7,1,8,3,4};
 		int[] sortedArray = unsortedArray.clone();
 		Arrays.sort(sortedArray);
+		//Sum of Array
+		int sumArray = Arrays.stream(integerArray).sum();
+		//Average of Array can return a Double, so use var or OptionalDouble as type
+		var averageArray = Arrays.stream(integerArray).average();
+		//Multiply all elements of Array
+		int multiplyArray = Arrays.stream(integerArray).reduce(1, Math::multiplyExact);
+		
 		
 		//Set Operations
 		//Sets don't allow for duplicate items, can be used to get number of unique occurrences
