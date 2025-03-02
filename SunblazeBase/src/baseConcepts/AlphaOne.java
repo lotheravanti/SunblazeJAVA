@@ -49,6 +49,21 @@ public class AlphaOne {
 		double squareRootInt = Math.sqrt(integer);
 		//Get difference between two numbers
 		int differenceInteger = Math.abs(character - secondInteger);
+		//Get current quarter of the year
+		int currentMonth = 5;
+		int currentQuarter = (int) Math.ceil(currentMonth / 3.);
+		
+		//Character Operations
+		//Switch Upper Case and Lower Case using For Each loop
+		String reverseUpperLower = "uPpEr cAsE lOwEr cAsE";
+		String reversedUpperLower = "";
+        for (char c : reverseUpperLower.toCharArray()) {
+            if(Character.isUpperCase(c)) {
+                reversedUpperLower += Character.toLowerCase(c);
+            } else {
+            	reversedUpperLower += Character.toUpperCase(c);
+            }
+        }
 		
 		//String Operations
 		String stringValue = "lower case text";
@@ -92,6 +107,7 @@ public class AlphaOne {
 		fixedArray[2] = 10;
 		//Create Two Dimensional Array
 		int[][] twoDimArray = {{1, 2}, {3, 4}, {5, 6}};
+		//Append to Array
 		//Generate Array from String
 		String stringToArray = "This is an Array from a String.";
 		String[] arrayFromString = stringToArray.split(" ");
@@ -118,7 +134,15 @@ public class AlphaOne {
 		var averageArray = Arrays.stream(integerArray).average();
 		//Multiply all elements of Array
 		int multiplyArray = Arrays.stream(integerArray).reduce(1, Math::multiplyExact);
-		
+		//Convert from Binary to base 10
+		int[] binaryArray = {0, 1, 0, 1};
+		int intConvertedFromBinary = 0;
+		String binaryNumberString = "";
+		for (int i = 0; i < binaryArray.length; i++)
+		{
+		    intConvertedFromBinary += binaryArray[i] * (int)Math.pow(2, binaryArray.length - i - 1);
+		    binaryNumberString += binaryArray[i];
+		}
 		
 		//Set Operations
 		//Sets don't allow for duplicate items, can be used to get number of unique occurrences
@@ -130,6 +154,8 @@ public class AlphaOne {
 	    }
 		//Add all from Array at once
 		Collections.<String>addAll(sortedSet, stringForSetArray);
+		
+		//Enumerable Operations
 		
 		//Conditionals
 		//If Else Statement
@@ -225,6 +251,10 @@ public class AlphaOne {
 		System.out.println(String.format("Integers"));
 		System.out.println(String.format("Converting String '%s' to Integer: %d", stringNumber, intStringNumber));
 		
+		//Characters
+		System.out.println(String.format("%nCharacters"));
+		System.out.println(String.format("Switching Upper and Lower case from '%s' is '%s'", reverseUpperLower, reversedUpperLower));
+		
 		//Strings
 		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
 		System.out.println(String.format("%nStrings"));
@@ -248,11 +278,15 @@ public class AlphaOne {
 		System.out.println("Split '" + stringInt + "' to Int Array '" + Arrays.toString(stringToIntArray) + "'");
 		System.out.println(String.format("Minimum value of Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
 		System.out.println(String.format("Unsorted Array is '%s', sorted Array is '%s'", Arrays.toString(unsortedArray), Arrays.toString(sortedArray)));
+		System.out.println(String.format("Converting binary number %s to base 10 number is %d", binaryNumberString, intConvertedFromBinary));
 		
 		//Sets
 		System.out.println(String.format("%nSets"));
 		System.out.println(String.format("Unique letters in String '%s' are '%s'", stringForSet, String.join("", hashSet)));
 		System.out.println(String.format("Unique and sorted letters in String '%s' are '%s'", stringForSet, String.join("", sortedSet)));
+		
+		//Enumerable
+		System.out.println(String.format("%nEnumerable"));
 		
 		//Conditionals
 		System.out.println(String.format("%nConditionals"));
