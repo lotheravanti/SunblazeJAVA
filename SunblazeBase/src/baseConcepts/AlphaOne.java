@@ -2,7 +2,6 @@ package baseConcepts;
 
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public class AlphaOne {
 
@@ -49,6 +48,10 @@ public class AlphaOne {
 		double roundDownInt = Math.floor(realNumber);
 		//Round up
 		double roundUpInt = Math.ceil(realNumber);
+		//Get number at the power of N
+		int numberForPower = 7;
+		int powerN = 2;
+		int numberAtPowerN = (int)Math.pow(numberForPower, powerN);
 		//Check if number is a perfect square
 		double squareRootInt = Math.sqrt(integer);
 		//Get difference between two numbers
@@ -238,6 +241,46 @@ public class AlphaOne {
 		      whileIterator += 1;
 		    }
 		
+	    //Collections
+	    int[] arrayForCollection = {2,6,4,76,102,5,17};
+	    List<Integer> collectionList = new ArrayList();
+	    //Add an item to Collection
+	    collectionList.add(arrayForCollection[0]);
+	    //Add all items to Collection using add
+	    for(var item: arrayForCollection) {
+	    	collectionList.add(item);
+	    }
+	    //Get the sum of all items in Collection
+	    //Using Iterator and While loop
+	    Iterator<Integer> iterationList = collectionList.iterator();
+	    int collectionWhileSum = 0;
+	    while(iterationList.hasNext()) {
+	    	collectionWhileSum += iterationList.next();
+	    }	    
+	    //Using For Loop
+	    int collectionForSum = 0;
+	    for(var num : collectionList) {
+	    	collectionForSum += num;
+	    }
+	    //HashMap Collection
+	    HashMap<Integer, Integer> intHashMap = new HashMap();
+	    //Add number and square of number to HashMap using put
+	    for(var num : collectionList) {
+	    	intHashMap.put(num, (int)Math.pow(num, 2));
+	    }
+	    //Get sum of all squares in HashMap 
+	    //Using entrySet() both Key and Value can be referenced: getKey(), getValue()
+	    int intHashMapSumSquares = 0;
+	    for(var num : intHashMap.entrySet()) {
+	    	intHashMapSumSquares += num.getValue();
+	    }
+	    //Using Lambda expression, 
+	    //Variable is defined inside Lambda expression
+	    intHashMap.forEach((key, value) -> {
+	    	int intHashMapSumSquaresLambda = 0;
+	    	intHashMapSumSquaresLambda += value;
+	    });
+	    
 		//OOP
 		//Public method requires Instance of Class
 		AlphaTwo _alphaTwo = new AlphaTwo();
@@ -308,6 +351,12 @@ public class AlphaOne {
 		//While Loops
 		System.out.println(String.format("%nWhile Loops"));
 		System.out.println(String.format("The number %d has %d divisors", intDivisors, numberOfDivisors));
+		
+		//Collection
+		System.out.println(String.format("%nCollections"));
+		System.out.println(String.format("Collection is '%s', Sum of Collection using While loop is %d, using For loop is %d", String.join(", ", collectionList.toString()), collectionWhileSum, collectionForSum));
+		System.out.println(String.format("Collection is '%s', HashMap with Square values is %s", String.join(", ", collectionList.toString()), Collections.singletonList(intHashMap)));
+		System.out.println(String.format("Sum of all Square values in HashMap %s is %d, using Lambda expression %d", Collections.singletonList(intHashMap), intHashMapSumSquares, intHashMapSumSquares));
 		
 		//OOP
 		System.out.println(String.format("%nOOP"));
