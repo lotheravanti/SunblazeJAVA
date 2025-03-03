@@ -2,6 +2,7 @@ package baseConcepts;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class AlphaOne {
 
@@ -41,6 +42,9 @@ public class AlphaOne {
 		//Convert String to Integer
 		String stringNumber = "12345";
 		int intStringNumber = Integer.parseInt(stringNumber);
+		//Always return positive number
+		int negativeInteger = -4;
+		int negativeToPositiveInteger = Math.abs(negativeInteger);
 		//Round down
 		double roundDownInt = Math.floor(realNumber);
 		//Round up
@@ -48,10 +52,12 @@ public class AlphaOne {
 		//Check if number is a perfect square
 		double squareRootInt = Math.sqrt(integer);
 		//Get difference between two numbers
-		int differenceInteger = Math.abs(character - secondInteger);
+		int firstNumber = 40;
+		int secondNumber = 13;
+		int differenceBetween = Math.abs(secondNumber - firstNumber);
 		//Get current quarter of the year
 		int currentMonth = 5;
-		int currentQuarter = (int) Math.ceil(currentMonth / 3.);
+		int currentQuarter = (int) Math.ceil(currentMonth / 3.0);
 		
 		//Character Operations
 		//Switch Upper Case and Lower Case using For Each loop
@@ -250,6 +256,7 @@ public class AlphaOne {
 		//Integers
 		System.out.println(String.format("Integers"));
 		System.out.println(String.format("Converting String '%s' to Integer: %d", stringNumber, intStringNumber));
+		System.out.println(String.format("Current Month %d is in Quarter: %d", currentMonth, currentQuarter));
 		
 		//Characters
 		System.out.println(String.format("%nCharacters"));
