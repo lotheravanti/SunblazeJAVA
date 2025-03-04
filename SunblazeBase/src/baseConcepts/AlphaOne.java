@@ -48,6 +48,10 @@ public class AlphaOne {
 		double roundDownInt = Math.floor(realNumber);
 		//Round up
 		double roundUpInt = Math.ceil(realNumber);
+		//Dividing two Integers will always return a whole number
+		int forDivisionInt = 10;
+		int divisorInt = 3;
+		int divisionResultInt = forDivisionInt / divisorInt;
 		//Get number at the power of N
 		int numberForPower = 7;
 		int powerN = 2;
@@ -299,6 +303,7 @@ public class AlphaOne {
 		//Integers
 		System.out.println(String.format("Integers"));
 		System.out.println(String.format("Converting String '%s' to Integer: %d", stringNumber, intStringNumber));
+		System.out.println(String.format("%d can be divided by %d a total of %d times", forDivisionInt, divisorInt, divisionResultInt));
 		System.out.println(String.format("Current Month %d is in Quarter: %d", currentMonth, currentQuarter));
 		
 		//Characters
