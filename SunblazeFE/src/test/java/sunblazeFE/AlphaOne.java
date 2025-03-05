@@ -1,43 +1,58 @@
-package baseConcepts;
+package sunblazeFE;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Pattern;
 
-public class AlphaOne {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		//Primitives
-		int integer = 16;
-		int secondInteger = 3;
-		double decimal = 12.45;
-		float realNumber = 3.1417639f;
-		long largeNumber = 100000000000L;
-		//Max value for byte is 100
-		byte binaryValue = 100;
-		boolean booleanValue = true;
-		//Single quotes for Character
-		char character = 'a';
-		
-		//Non Primitives
-		//Double quotes for String
-		String message = "Alpha One Initialized";
-		//Array
-		int[] integerArray = {1, 2, 3, 4, 5, 6, 7};
-		String[] stringArray = {"This", "is", "a", "String", "Array."};
-		//Implicit variable declaration can only be done inside a Method(main here)
+class AlphaOne {
+
+	//Primitives
+	int integer = 16;
+	int secondInteger = 3;
+	double decimal = 12.45;
+	float realNumber = 3.1417639f;
+	long largeNumber = 100000000000L;
+	//Max value for byte is 100
+	byte binaryValue = 100;
+	boolean booleanValue = true;
+	//Single quotes for Character
+	char character = 'a';
+	
+	//Non Primitives
+	//Double quotes for String
+	String message = "Alpha One Initialized";
+	//Array
+	int[] integerArray = {1, 2, 3, 4, 5, 6, 7};
+	String[] stringArray = {"This", "is", "a", "String", "Array."};
+	//List
+	//Tuple
+	//Set
+	Set<String> hashSet = new HashSet<>();
+	//Use TreeSet for a Sorted Set
+	Set<String> sortedSet = new TreeSet<>();
+	//Dictionary
+	
+	@BeforeEach                                         
+    void setUp() {
+		//Implicit variable declaration can only be done inside a Method
 		var varString = "varString";
 		var varInteger = new int[]{1, 2, 3, 4, 5};
-		//List
-		//Tuple
-		//Set
-		Set<String> hashSet = new HashSet<>();
-		//Use TreeSet for a Sorted Set
-		Set<String> sortedSet = new TreeSet<>();
-		//Dictionary
-		
-		//Integer Operations
+    }
+	
+	@Test                                               
+    @DisplayName("Integer Operations")   
+    void Integer() {
 		//Convert String to Integer
 		String stringNumber = "12345";
 		int intStringNumber = Integer.parseInt(stringNumber);
@@ -66,7 +81,15 @@ public class AlphaOne {
 		int currentMonth = 5;
 		int currentQuarter = (int) Math.ceil(currentMonth / 3.0);
 		
-		//Character Operations
+		System.out.println(String.format("%nIntegers"));
+		System.out.println(String.format("Converting String '%s' to Integer: %d", stringNumber, intStringNumber));
+		System.out.println(String.format("%d can be divided by %d a total of %d times", forDivisionInt, divisorInt, divisionResultInt));
+		System.out.println(String.format("Current Month %d is in Quarter: %d", currentMonth, currentQuarter));
+    }
+	
+	@Test                                               
+    @DisplayName("Character Operations")   
+    void Characters() {
 		//Switch Upper Case and Lower Case using For Each loop
 		String reverseUpperLower = "uPpEr cAsE lOwEr cAsE";
 		String reversedUpperLower = "";
@@ -78,7 +101,13 @@ public class AlphaOne {
             }
         }
 		
-		//String Operations
+        System.out.println(String.format("%nCharacters"));
+		System.out.println(String.format("Switching Upper and Lower case from '%s' is '%s'", reverseUpperLower, reversedUpperLower));
+	}
+	
+	@Test                                               
+    @DisplayName("String Operations")   
+    void Strings() {
 		String stringValue = "lower case text";
 		//Get length of String
 		int lengthString = message.length();
@@ -112,7 +141,24 @@ public class AlphaOne {
 		//Generate String of sorted characters
 		StringBuilder charactersFromStringSorted = stringCharacters.chars().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append);
 		
-		//Array Operations
+		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
+		System.out.println(String.format("%nStrings"));
+		System.out.println(String.format("String length for '%s' is %d", stringValue, lengthString));
+		System.out.println(String.format("Reversed String is '%s'", reverseString));
+		System.out.println("First character from '" + stringValue + "' is '" + firstOfString + "'");
+		System.out.println("Last 3 characters from '" + stringValue + "' are '" + lastOfString + "'");
+		System.out.println("Removing first and last characters from '" + stringValue + "' results in '" + removeFirstLast + "'");
+		System.out.println("'" + stringAlphabet + "' contains only alphabet characters: " + checkAlphabet);
+		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));
+		System.out.println("'" + upperString + "' is all Upper Case: " + isUpper);
+		System.out.println("'" + lowerString + "' is all Lower Case: " + isLower);
+		System.out.println(String.format("Breaking down String '%s' and returning all distinct values results in '%s'", stringCharacters, charactersFromStringDistinct));
+		System.out.println(String.format("Breaking down String '%s' and returning sorted values results in '%s'", stringCharacters, charactersFromStringSorted));	
+	}
+	
+	@Test                                               
+    @DisplayName("Array Operations")   
+    void Arrays() {
 		//Get length of Array
 		int lengthArray = stringArray.length;
 		//Create new placeholder Array of fixed length
@@ -157,7 +203,19 @@ public class AlphaOne {
 		    binaryNumberString += binaryArray[i];
 		}
 		
-		//Set Operations
+		System.out.println(String.format("%nArrays"));
+		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
+		System.out.println("Joined Array is '" + joinedArray + "'");
+		System.out.println("Reversed Array is '" + String.join(" ", reverseArray) + "'");
+		System.out.println("Split '" + stringInt + "' to Int Array '" + Arrays.toString(stringToIntArray) + "'");
+		System.out.println(String.format("Minimum value of Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
+		System.out.println(String.format("Unsorted Array is '%s', sorted Array is '%s'", Arrays.toString(unsortedArray), Arrays.toString(sortedArray)));
+		System.out.println(String.format("Converting binary number %s to base 10 number is %d", binaryNumberString, intConvertedFromBinary));
+	}
+	
+	@Test                                               
+    @DisplayName("Set Operations")   
+    void Sets() {
 		//Sets don't allow for duplicate items, can be used to get number of unique occurrences
 		String stringForSet = "aretheyhereyestheyarehere";
 		String[] stringForSetArray = stringForSet.split("(?<=.)");
@@ -168,9 +226,20 @@ public class AlphaOne {
 		//Add all from Array at once
 		Collections.<String>addAll(sortedSet, stringForSetArray);
 		
-		//Enumerable Operations
-		
-		//Conditionals
+		System.out.println(String.format("%nSets"));
+		System.out.println(String.format("Unique letters in String '%s' are '%s'", stringForSet, String.join("", hashSet)));
+		System.out.println(String.format("Unique and sorted letters in String '%s' are '%s'", stringForSet, String.join("", sortedSet)));
+	}
+	
+	@Test                                               
+    @DisplayName("Enumerable Operations")   
+    void Enumerables() {
+		System.out.println(String.format("%nEnumerable"));
+	}
+	
+	@Test                                               
+    @DisplayName("Conditional Operations")   
+    void Conditionals() {
 		//If Else Statement
 		boolean condition = false;
 		if (integerArray[0] == 1){
@@ -208,7 +277,13 @@ public class AlphaOne {
 			verifiedString = true;
 		}
 		
-		//For Loops
+		System.out.println(String.format("%nConditionals"));
+		System.out.println(String.format("Verified if String '%s' is the same as '%s': %b", verifyString1, verifyString2, verifiedString));
+	}
+	
+	@Test                                               
+    @DisplayName("For Loops")   
+    void ForLoops() {
 		//For index in Array
 		int forLoopCount = 0;
 		for (int i = 0; i < integerArray.length; i++)
@@ -231,8 +306,16 @@ public class AlphaOne {
 	    		countMatchingString += 1;
 	    		}
 	    	}
-	    
-		//While Loops
+		
+		System.out.println(String.format("%nFor Loops"));
+		System.out.println(String.format("Using Index For Loop to count Array '%s' returns %d", Arrays.toString(integerArray), forLoopCount));
+		System.out.println(String.format("Using Foreach Loop on every element in Array '%s' returns the following String '%s'", String.join(" ", stringArray), forEachString));
+		System.out.println(String.format("The number of vowels in '%s' is %d", matchingString, countMatchingString));		
+	}
+	
+	@Test                                               
+    @DisplayName("While Loops")   
+    void WhileLoops() {
 		//Calculate number of divisors in a number, example: 30 has 1, 2, 3, 5, 6, 10, 15 and 30
 	    int intDivisors = 30;
 		int numberOfDivisors = 1;
@@ -245,8 +328,14 @@ public class AlphaOne {
 		      whileIterator += 1;
 		    }
 		
-	    //Collections
-	    int[] arrayForCollection = {2,6,4,76,102,5,17};
+		System.out.println(String.format("%nWhile Loops"));
+		System.out.println(String.format("The number %d has %d divisors", intDivisors, numberOfDivisors));		
+	}
+	
+	@Test                                               
+    @DisplayName("Collections")   
+    void Collections() {
+		int[] arrayForCollection = {2,6,4,76,102,5,17};
 	    List<Integer> collectionList = new ArrayList();
 	    //Add an item to Collection
 	    collectionList.add(arrayForCollection[0]);
@@ -284,8 +373,16 @@ public class AlphaOne {
 	    	int intHashMapSumSquaresLambda = 0;
 	    	intHashMapSumSquaresLambda += value;
 	    });
-	    
-		//OOP
+		
+		System.out.println(String.format("%nCollections"));
+		System.out.println(String.format("Collection is '%s', Sum of Collection using While loop is %d, using For loop is %d", String.join(", ", collectionList.toString()), collectionWhileSum, collectionForSum));
+		System.out.println(String.format("Collection is '%s', HashMap with Square values is %s", String.join(", ", collectionList.toString()), Collections.singletonList(intHashMap)));
+		System.out.println(String.format("Sum of all Square values in HashMap %s is %d, using Lambda expression %d", Collections.singletonList(intHashMap), intHashMapSumSquares, intHashMapSumSquares));		
+	}
+	
+	@Test                                               
+    @DisplayName("OOP")   
+    void OOP() {
 		//Public method requires Instance of Class
 		AlphaTwo _alphaTwo = new AlphaTwo();
 		int alphaTwoIntSum = _alphaTwo.SumIntArray(integerArray);
@@ -300,70 +397,6 @@ public class AlphaOne {
 		//Subclass inherits method from Superclass
 		int alphaTwoSubIntSum = _alphaTwoSub.SumIntArray(_alphaTwoSub.alphaTwoIntArray);
 		
-		//Integers
-		System.out.println(String.format("Integers"));
-		System.out.println(String.format("Converting String '%s' to Integer: %d", stringNumber, intStringNumber));
-		System.out.println(String.format("%d can be divided by %d a total of %d times", forDivisionInt, divisorInt, divisionResultInt));
-		System.out.println(String.format("Current Month %d is in Quarter: %d", currentMonth, currentQuarter));
-		
-		//Characters
-		System.out.println(String.format("%nCharacters"));
-		System.out.println(String.format("Switching Upper and Lower case from '%s' is '%s'", reverseUpperLower, reversedUpperLower));
-		
-		//Strings
-		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
-		System.out.println(String.format("%nStrings"));
-		System.out.println(String.format("String length for '%s' is %d", stringValue, lengthString));
-		System.out.println(String.format("Reversed String is '%s'", reverseString));
-		System.out.println("First character from '" + stringValue + "' is '" + firstOfString + "'");
-		System.out.println("Last 3 characters from '" + stringValue + "' are '" + lastOfString + "'");
-		System.out.println("Removing first and last characters from '" + stringValue + "' results in '" + removeFirstLast + "'");
-		System.out.println("'" + stringAlphabet + "' contains only alphabet characters: " + checkAlphabet);
-		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));
-		System.out.println("'" + upperString + "' is all Upper Case: " + isUpper);
-		System.out.println("'" + lowerString + "' is all Lower Case: " + isLower);
-		System.out.println(String.format("Breaking down String '%s' and returning all distinct values results in '%s'", stringCharacters, charactersFromStringDistinct));
-		System.out.println(String.format("Breaking down String '%s' and returning sorted values results in '%s'", stringCharacters, charactersFromStringSorted));
-		
-		//Arrays
-		System.out.println(String.format("%nArrays"));
-		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
-		System.out.println("Joined Array is '" + joinedArray + "'");
-		System.out.println("Reversed Array is '" + String.join(" ", reverseArray) + "'");
-		System.out.println("Split '" + stringInt + "' to Int Array '" + Arrays.toString(stringToIntArray) + "'");
-		System.out.println(String.format("Minimum value of Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
-		System.out.println(String.format("Unsorted Array is '%s', sorted Array is '%s'", Arrays.toString(unsortedArray), Arrays.toString(sortedArray)));
-		System.out.println(String.format("Converting binary number %s to base 10 number is %d", binaryNumberString, intConvertedFromBinary));
-		
-		//Sets
-		System.out.println(String.format("%nSets"));
-		System.out.println(String.format("Unique letters in String '%s' are '%s'", stringForSet, String.join("", hashSet)));
-		System.out.println(String.format("Unique and sorted letters in String '%s' are '%s'", stringForSet, String.join("", sortedSet)));
-		
-		//Enumerable
-		System.out.println(String.format("%nEnumerable"));
-		
-		//Conditionals
-		System.out.println(String.format("%nConditionals"));
-		System.out.println(String.format("Verified if String '%s' is the same as '%s': %b", verifyString1, verifyString2, verifiedString));
-		
-		//For Loops
-		System.out.println(String.format("%nFor Loops"));
-		System.out.println(String.format("Using Index For Loop to count Array '%s' returns %d", Arrays.toString(integerArray), forLoopCount));
-		System.out.println(String.format("Using Foreach Loop on every element in Array '%s' returns the following String '%s'", String.join(" ", stringArray), forEachString));
-		System.out.println(String.format("The number of vowels in '%s' is %d", matchingString, countMatchingString));
-		
-		//While Loops
-		System.out.println(String.format("%nWhile Loops"));
-		System.out.println(String.format("The number %d has %d divisors", intDivisors, numberOfDivisors));
-		
-		//Collection
-		System.out.println(String.format("%nCollections"));
-		System.out.println(String.format("Collection is '%s', Sum of Collection using While loop is %d, using For loop is %d", String.join(", ", collectionList.toString()), collectionWhileSum, collectionForSum));
-		System.out.println(String.format("Collection is '%s', HashMap with Square values is %s", String.join(", ", collectionList.toString()), Collections.singletonList(intHashMap)));
-		System.out.println(String.format("Sum of all Square values in HashMap %s is %d, using Lambda expression %d", Collections.singletonList(intHashMap), intHashMapSumSquares, intHashMapSumSquares));
-		
-		//OOP
 		System.out.println(String.format("%nOOP"));
 		System.out.println(String.format("After creating instance of Class AlphaTwo, using its method SumIntArray to calculate sum of '%s' is %d", Arrays.toString(integerArray), alphaTwoIntSum));
 		System.out.println(String.format("Static method of Class AlphaTwo AverageIntArray used to calculate average of '%s' is %d", Arrays.toString(integerArray), alphaTwoIntAverage));
@@ -375,5 +408,4 @@ public class AlphaOne {
 		System.out.println(String.format("AlphaTwoSub is a Subclass and has inherited SumIntArray from AlphaTwo to sum '%s' resulting in %d", Arrays.toString(_alphaTwo.alphaTwoIntArray), alphaTwoSubIntSum));
 		System.out.println(String.format("AlphaTwoSub's String has been reversed using Base Class' Method: '%s'", _alphaTwoSub.alphaTwoSubString));
 	}
-
 }

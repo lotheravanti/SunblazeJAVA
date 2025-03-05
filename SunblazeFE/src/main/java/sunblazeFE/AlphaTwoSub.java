@@ -1,4 +1,4 @@
-package baseConcepts;
+package sunblazeFE;
 
 //Subclass of AlphaTwo
 public class AlphaTwoSub extends AlphaTwo {
