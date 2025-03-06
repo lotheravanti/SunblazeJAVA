@@ -175,7 +175,7 @@ class AlphaOne {
 		//In JAVA use .clone() to create a new variable, otherwise the original will be affected
 		String[] reverseArray = stringArray.clone();
 		Collections.reverse(Arrays.asList(reverseArray));
-		//Count occurrences in Array
+		//Count occurrences in Array => List
 		//Split String into Integer Array, split to String Array(with REGEX), then convert into Integer Array
 		String stringInt = "549713";
 		String[] stringIntToArray = stringInt.split("(?<=.)");
@@ -335,7 +335,7 @@ class AlphaOne {
 	@Test                                               
     @DisplayName("Collections")   
     void Collections() {
-		int[] arrayForCollection = {2,6,4,76,102,5,17};
+		int[] arrayForCollection = {2,6,4,76,2,102,5,17,2};
 	    List<Integer> collectionList = new ArrayList();
 	    //Add an item to Collection
 	    collectionList.add(arrayForCollection[0]);
@@ -343,6 +343,17 @@ class AlphaOne {
 	    for(var item: arrayForCollection) {
 	    	collectionList.add(item);
 	    }
+	    //Get Collection length(Subtract 1 from value to reference last item)
+	    int collectionLength = collectionList.size();
+	    //Get item in Collection by index
+	    int getCollectionItem = collectionList.get(0);
+	    //Remove item in List by index
+	    collectionList.remove(collectionList.size() - 2);
+	    //Remove item in List by value
+	    collectionList.remove(Integer.valueOf(102));
+	    //Count occurrences in List
+	    int collectionNumber = 2;
+	    int collectionOccurrencesInt = Collections.frequency(collectionList, collectionNumber);
 	    //Get the sum of all items in Collection
 	    //Using Iterator and While loop
 	    Iterator<Integer> iterationList = collectionList.iterator();
@@ -373,8 +384,9 @@ class AlphaOne {
 	    	int intHashMapSumSquaresLambda = 0;
 	    	intHashMapSumSquaresLambda += value;
 	    });
-		
+	    
 		System.out.println(String.format("%nCollections"));
+		System.out.println(String.format("The number %d appears %d times in Collection %s", collectionNumber, collectionOccurrencesInt, String.join(", ", collectionList.toString())));
 		System.out.println(String.format("Collection is '%s', Sum of Collection using While loop is %d, using For loop is %d", String.join(", ", collectionList.toString()), collectionWhileSum, collectionForSum));
 		System.out.println(String.format("Collection is '%s', HashMap with Square values is %s", String.join(", ", collectionList.toString()), Collections.singletonList(intHashMap)));
 		System.out.println(String.format("Sum of all Square values in HashMap %s is %d, using Lambda expression %d", Collections.singletonList(intHashMap), intHashMapSumSquares, intHashMapSumSquares));		
