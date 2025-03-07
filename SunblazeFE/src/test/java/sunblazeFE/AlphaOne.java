@@ -52,7 +52,7 @@ class AlphaOne {
 	
 	@Test                                               
     @DisplayName("Integer Operations")   
-    void Integer() {
+    void Integers() {
 		//Convert String to Integer
 		String stringNumber = "12345";
 		int intStringNumber = Integer.parseInt(stringNumber);
