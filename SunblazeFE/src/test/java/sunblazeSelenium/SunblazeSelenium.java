@@ -26,7 +26,7 @@ class SunblazeSelenium {
 	
 	@BeforeEach                                         
     void setUp() {
-		//Need to match IWebDriver type between _driver and driver by getting .driver object from SeleniumDriver class
+		//Need to match WebDriver type between _driver and driver by getting .driver object from ChromeDriver class
 		WebDriver driver = new ChromeDriver();
         _driver = driver;
     }
@@ -48,7 +48,7 @@ class SunblazeSelenium {
     }
     
     @Test                                               
-    @DisplayName("Navigate to Inputs")   
+    @DisplayName("Navigate to Dropdown")   
     void selectFromDropdown() throws InterruptedException {
     	Dropdown dropdown = new Dropdown(_driver);
     	dropdown.SelectByTextDropdown(dropdown.dropdownField, "Option 2");
