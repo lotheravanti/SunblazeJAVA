@@ -178,7 +178,18 @@ class AlphaOne {
 		//In JAVA use .clone() to create a new variable, otherwise the original will be affected
 		String[] reverseArray = stringArray.clone();
 		Collections.reverse(Arrays.asList(reverseArray));
-		//Count occurrences in Array => List
+		//Count occurrences in Array
+		String[] occurrencesArray = {"a", "a", "b", "c", "d", "d", "e", "e", "f", "x", "x", "y", "y", "z"};
+		String[] occurrencesInArray = {"x", "y", "z"};
+		int occurrencesInArrayCount = 0;
+		for (String st: occurrencesArray)
+		{
+		    if (Arrays.stream(occurrencesInArray).anyMatch(st::equals))
+		    {
+		        occurrencesInArrayCount += 1;
+		    }
+		}
+		System.out.println(occurrencesInArrayCount);
 		//Split String into Integer Array, split to String Array(with REGEX), then convert into Integer Array
 		String stringInt = "549713";
 		String[] stringIntToArray = stringInt.split("(?<=.)");
@@ -191,7 +202,12 @@ class AlphaOne {
 		//Average of Array can return a Double, so use var or OptionalDouble as type
 		double averageArray = sumArray / integerArray.length;
 		//Multiply all elements of Array
-		int multiplyArray = Arrays.stream(integerArray).reduce(1, Math::multiplyExact);
+		int productArray1 = 1;
+		for (int num: integerArray)
+		{
+		    productArray1 *= num;
+		}
+		int productArray2 = Arrays.stream(integerArray).reduce(1, Math::multiplyExact);
 		//Sort an Array, cloning original so it isn't affected
 		int[] unsortedArray = {9,5,2,7,1,8,3,4};
 		int[] sortedArray = unsortedArray.clone();
@@ -216,10 +232,11 @@ class AlphaOne {
 		System.out.println(String.format("%nArrays"));
 		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
 		System.out.println(String.format("String from joined Array is '%s'", joinedStringArray));
-		System.out.println(String.format("Reversed Array is '%s'", String.join(", ", reverseArray)));
+		System.out.println(String.format("For '%s', Reversed Array is '%s'", String.join(", ", stringArray), String.join(", ", reverseArray)));
+		System.out.println(String.format("The characters '%s' appear in '%s' a total of %d times", String.join(", ", occurrencesInArray), String.join(", ", occurrencesArray), occurrencesInArrayCount));
 		System.out.println(String.format("Split '%s' to Int Array '%s'", stringInt, Arrays.toString(stringToIntArray)));
 		System.out.println(String.format("Minimum value of Integer Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
-		System.out.println(String.format("For Integer Array '%s' Sum is %d, Average is %f and Aggregate is %d", Arrays.toString(integerArray), sumArray, averageArray, multiplyArray));
+		System.out.println(String.format("For Integer Array '%s' Sum is %d, Average is %f and Product is %d", Arrays.toString(integerArray), sumArray, averageArray, productArray1));
 		System.out.println(String.format("Unsorted Array is '%s', sorted Array is '%s'", Arrays.toString(unsortedArray), Arrays.toString(sortedArray)));
 		System.out.println(String.format("Sum of Object Array '%s' is %d", Arrays.toString(objArray), objArraySum));
 		System.out.println(String.format("Converting binary number %s to base 10 number is %d", binaryNumberString, intConvertedFromBinary));
