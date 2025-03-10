@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
@@ -14,6 +15,8 @@ import java.util.regex.Pattern;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import com.google.common.collect.ObjectArrays;
 
 class AlphaOne {
 
@@ -166,12 +169,12 @@ class AlphaOne {
 		fixedArray[2] = 10;
 		//Create Two Dimensional Array
 		int[][] twoDimArray = {{1, 2}, {3, 4}, {5, 6}};
-		//Append to Array
+		//Append to Array => List
 		//Generate Array from String
 		String stringToArray = "This is an Array from a String.";
 		String[] arrayFromString = stringToArray.split(" ");
 		//Generate String from Array with delimiter
-		String joinedArray = String.join(" ", stringArray);
+		String joinedStringArray = String.join(" ", stringArray);
 		//In JAVA use .clone() to create a new variable, otherwise the original will be affected
 		String[] reverseArray = stringArray.clone();
 		Collections.reverse(Arrays.asList(reverseArray));
@@ -183,16 +186,23 @@ class AlphaOne {
 		//Get Minimum and Maximum values from an Array
 		int minArray = Arrays.stream(integerArray).min().getAsInt();
 		int maxArray = Arrays.stream(integerArray).max().getAsInt();
+		//Sum of Array
+		int sumArray = Arrays.stream(integerArray).sum();
+		//Average of Array can return a Double, so use var or OptionalDouble as type
+		double averageArray = sumArray / integerArray.length;
+		//Multiply all elements of Array
+		int multiplyArray = Arrays.stream(integerArray).reduce(1, Math::multiplyExact);
 		//Sort an Array, cloning original so it isn't affected
 		int[] unsortedArray = {9,5,2,7,1,8,3,4};
 		int[] sortedArray = unsortedArray.clone();
 		Arrays.sort(sortedArray);
-		//Sum of Array
-		int sumArray = Arrays.stream(integerArray).sum();
-		//Average of Array can return a Double, so use var or OptionalDouble as type
-		var averageArray = Arrays.stream(integerArray).average();
-		//Multiply all elements of Array
-		int multiplyArray = Arrays.stream(integerArray).reduce(1, Math::multiplyExact);
+		//Iterate over object Array using var
+		Object[] objArray = {1, 2, "3", "4"};
+		var objArraySum = 0;
+		for (var value: objArray)
+		{
+		    objArraySum += Integer.parseInt(value.toString());
+		}
 		//Convert from Binary to base 10
 		int[] binaryArray = {0, 1, 0, 1};
 		int intConvertedFromBinary = 0;
@@ -205,11 +215,13 @@ class AlphaOne {
 		
 		System.out.println(String.format("%nArrays"));
 		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
-		System.out.println("Joined Array is '" + joinedArray + "'");
-		System.out.println("Reversed Array is '" + String.join(" ", reverseArray) + "'");
-		System.out.println("Split '" + stringInt + "' to Int Array '" + Arrays.toString(stringToIntArray) + "'");
-		System.out.println(String.format("Minimum value of Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
+		System.out.println(String.format("String from joined Array is '%s'", joinedStringArray));
+		System.out.println(String.format("Reversed Array is '%s'", String.join(", ", reverseArray)));
+		System.out.println(String.format("Split '%s' to Int Array '%s'", stringInt, Arrays.toString(stringToIntArray)));
+		System.out.println(String.format("Minimum value of Integer Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
+		System.out.println(String.format("For Integer Array '%s' Sum is %d, Average is %f and Aggregate is %d", Arrays.toString(integerArray), sumArray, averageArray, multiplyArray));
 		System.out.println(String.format("Unsorted Array is '%s', sorted Array is '%s'", Arrays.toString(unsortedArray), Arrays.toString(sortedArray)));
+		System.out.println(String.format("Sum of Object Array '%s' is %d", Arrays.toString(objArray), objArraySum));
 		System.out.println(String.format("Converting binary number %s to base 10 number is %d", binaryNumberString, intConvertedFromBinary));
 	}
 	
