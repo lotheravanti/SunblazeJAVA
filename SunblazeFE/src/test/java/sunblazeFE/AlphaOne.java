@@ -126,6 +126,9 @@ class AlphaOne {
 		String lastOfString = stringValue.substring(stringValue.length() - 3);
 		//Remove First and Last characters of String
 		String removeFirstLast = stringValue.substring(1, stringValue.length() - 1);
+		//Remove part of String that comes after unique delimiter
+        String toRemoveAnchorString = "www.codewars.com#about";
+        String removedAnchorString = toRemoveAnchorString.split("#")[0];
 		//Check if String is Alphabet
 		String stringAlphabet = "OnLyAlPhAbEt"; 
 		boolean checkAlphabet = Pattern.matches("[a-zA-Z]+",stringAlphabet);
@@ -148,13 +151,14 @@ class AlphaOne {
 		System.out.println(String.format("%nStrings"));
 		System.out.println(String.format("String length for '%s' is %d", stringValue, lengthString));
 		System.out.println(String.format("Reversed String is '%s'", reverseString));
-		System.out.println("First character from '" + stringValue + "' is '" + firstOfString + "'");
-		System.out.println("Last 3 characters from '" + stringValue + "' are '" + lastOfString + "'");
-		System.out.println("Removing first and last characters from '" + stringValue + "' results in '" + removeFirstLast + "'");
-		System.out.println("'" + stringAlphabet + "' contains only alphabet characters: " + checkAlphabet);
+		System.out.println(String.format("First character from '%s' is '%s'", stringValue, firstOfString));
+		System.out.println(String.format("Last 3 characters from '%s' are '%s'", stringValue, lastOfString));
+		System.out.println(String.format("Removing first and last characters from '%s' results in '%s'", stringValue, removeFirstLast));
+		System.out.println(String.format("Remove from '%s' everything that comes after #: '%s'", toRemoveAnchorString, removedAnchorString));
+		System.out.println(String.format("'%s' contains only alphabet characters: %s", stringAlphabet, checkAlphabet));
 		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));
-		System.out.println("'" + upperString + "' is all Upper Case: " + isUpper);
-		System.out.println("'" + lowerString + "' is all Lower Case: " + isLower);
+		System.out.println(String.format("'%s' is all Upper Case: %b", upperString, isUpper));
+		System.out.println(String.format("'%s' is all Lower Case: %b", lowerString, isLower));
 		System.out.println(String.format("Breaking down String '%s' and returning all distinct values results in '%s'", stringCharacters, charactersFromStringDistinct));
 		System.out.println(String.format("Breaking down String '%s' and returning sorted values results in '%s'", stringCharacters, charactersFromStringSorted));	
 	}
