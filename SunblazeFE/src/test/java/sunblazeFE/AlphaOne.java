@@ -194,6 +194,9 @@ class AlphaOne {
 		    }
 		}
 		System.out.println(occurrencesInArrayCount);
+		//Split Integer into Integer Array
+		int intForArray = 1234567;
+	    int[] intToArray = Integer.toString(intForArray).chars().map(c -> c-'0').toArray();
 		//Split String into Integer Array, split to String Array(with REGEX), then convert into Integer Array
 		String stringInt = "549713";
 		String[] stringIntToArray = stringInt.split("(?<=.)");
@@ -238,6 +241,7 @@ class AlphaOne {
 		System.out.println(String.format("String from joined Array is '%s'", joinedStringArray));
 		System.out.println(String.format("For '%s', Reversed Array is '%s'", String.join(", ", stringArray), String.join(", ", reverseArray)));
 		System.out.println(String.format("The characters '%s' appear in '%s' a total of %d times", String.join(", ", occurrencesInArray), String.join(", ", occurrencesArray), occurrencesInArrayCount));
+		System.out.println(String.format("Split %d to Int Array '%s'", intForArray, Arrays.toString(intToArray)));
 		System.out.println(String.format("Split '%s' to Int Array '%s'", stringInt, Arrays.toString(stringToIntArray)));
 		System.out.println(String.format("Minimum value of Integer Array '%s' is %d, Maximum value is %d", Arrays.toString(integerArray), minArray, maxArray));
 		System.out.println(String.format("For Integer Array '%s' Sum is %d, Average is %f and Product is %d", Arrays.toString(integerArray), sumArray, averageArray, productArray1));

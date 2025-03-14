@@ -29,6 +29,8 @@ class SunblazeSelenium {
 		//Need to match WebDriver type between _driver and driver by getting .driver object from ChromeDriver class
 		WebDriver driver = new ChromeDriver();
         _driver = driver;
+        //Get Window Handle of Browser for working with multiple windows(pop-ups, etc)
+        String windowHandle = _driver.getWindowHandle();
     }
 	
     @Test                                               
@@ -36,15 +38,22 @@ class SunblazeSelenium {
     void openHomepage() {
     	Homepage homePage = new Homepage(_driver);
     	String verifyHomePage = homePage.GetText(homePage._txtHomePagetitle);
-    	assertEquals(verifyHomePage, "Welcome to the-internet",     
-                "Homepage text should appear");        
+    	assertEquals(verifyHomePage, "Welcome to the-internet", "Homepage text should appear");        
     }
     
     @Test                                               
-    @DisplayName("Navigate to Inputs")   
-    void inputNumbers() {
-    	Inputs inputs = new Inputs(_driver);
-    	inputs.FieldSendKeys(inputs.inputNumber, "23");      
+    @DisplayName("Navigate to Add/Remove")   
+    void addRemove() throws InterruptedException {
+    	AddRemove addRemove = new AddRemove(_driver);
+    	int timesClick = 3;
+    	addRemove.ClickMultiple(addRemove._btnAddElement, timesClick);
+    	Thread.sleep(1000);
+    	int numDeleteButtons = addRemove.GetElements(addRemove._btnDeleteElement).size();
+    	assertEquals(numDeleteButtons, timesClick, String.format("The Add button was clicked %d times and that many Delete buttons appeared", timesClick));  
+    	addRemove.ClickMultiple(addRemove._btnDeleteElement, timesClick - 1);
+    	int remainingDeleteButtons = addRemove.GetElements(addRemove._btnDeleteElement).size();
+    	assertEquals(remainingDeleteButtons, 1, "One Delete button remaining");
+    	Thread.sleep(1000);
     }
     
     @Test                                               
@@ -55,6 +64,13 @@ class SunblazeSelenium {
     	//So we can observe it actually changed
     	Thread.sleep(1000);
     	dropdown.SelectByTextDropdown(dropdown.dropdownField, "Option 1");     
+    }
+    
+    @Test                                               
+    @DisplayName("Navigate to Inputs")   
+    void inputNumbers() {
+    	Inputs inputs = new Inputs(_driver);
+    	inputs.FieldSendKeys(inputs.inputNumber, "23");      
     }
     
     //Add a wait at the end of every test for visibility when running manually
