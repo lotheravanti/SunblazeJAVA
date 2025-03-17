@@ -66,10 +66,11 @@ class AlphaOne {
 		double roundDownInt = Math.floor(realNumber);
 		//Round up
 		double roundUpInt = Math.ceil(realNumber);
-		//Dividing two Integers will always return a whole number
+		//Dividing two Integers will always return a whole number, cast to double for decimal values
 		int forDivisionInt = 10;
 		int divisorInt = 3;
 		int divisionResultInt = forDivisionInt / divisorInt;
+		double divisionResultDouble = (double) forDivisionInt / divisorInt;
 		//Get number at the power of N
 		int numberForPower = 7;
 		int powerN = 2;
@@ -87,6 +88,7 @@ class AlphaOne {
 		System.out.println(String.format("%nIntegers"));
 		System.out.println(String.format("Converting String '%s' to Integer: %d", stringNumber, intStringNumber));
 		System.out.println(String.format("%d can be divided by %d a total of %d times", forDivisionInt, divisorInt, divisionResultInt));
+		System.out.println(String.format("%d divided by %d is %g", forDivisionInt, divisorInt, divisionResultDouble));
 		System.out.println(String.format("Current Month %d is in Quarter: %d", currentMonth, currentQuarter));
     }
 	
@@ -120,6 +122,9 @@ class AlphaOne {
 		String reverseString = new StringBuilder().append(stringValue).reverse().toString();
 		//Replace part of String
 		String replacedMessage = message.replace("One", "Prime");
+		//Replace multiple characters at once using REGEX
+		String replaceMultiple = "This will be A String wIthoUt all vOwels";
+		String replacedMultiple = replaceMultiple.replaceAll("[aeiouAEIOU]", "");
 		//Get first N characters of a String
 		String firstOfString = stringValue.substring(0,1);
 		//Get last N characters of a String
@@ -151,6 +156,7 @@ class AlphaOne {
 		System.out.println(String.format("%nStrings"));
 		System.out.println(String.format("String length for '%s' is %d", stringValue, lengthString));
 		System.out.println(String.format("Reversed String is '%s'", reverseString));
+		System.out.println(String.format("Removing all vowels from String '%s' results in: '%s'", replaceMultiple, replacedMultiple));
 		System.out.println(String.format("First character from '%s' is '%s'", stringValue, firstOfString));
 		System.out.println(String.format("Last 3 characters from '%s' are '%s'", stringValue, lastOfString));
 		System.out.println(String.format("Removing first and last characters from '%s' results in '%s'", stringValue, removeFirstLast));
@@ -228,13 +234,14 @@ class AlphaOne {
 		}
 		//Convert from Binary to base 10
 		int[] binaryArray = {0, 1, 0, 1};
-		int intConvertedFromBinary = 0;
+		int intConvertedFromBinary1 = 0;
 		String binaryNumberString = "";
 		for (int i = 0; i < binaryArray.length; i++)
 		{
-		    intConvertedFromBinary += binaryArray[i] * (int)Math.pow(2, binaryArray.length - i - 1);
+		    intConvertedFromBinary1 += binaryArray[i] * (int)Math.pow(2, binaryArray.length - i - 1);
 		    binaryNumberString += binaryArray[i];
 		}
+		int intConvertedFromBinary2 = Integer.parseInt(binaryNumberString, 2); //Alternate method
 		
 		System.out.println(String.format("%nArrays"));
 		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
@@ -247,7 +254,7 @@ class AlphaOne {
 		System.out.println(String.format("For Integer Array '%s' Sum is %d, Average is %f and Product is %d", Arrays.toString(integerArray), sumArray, averageArray, productArray1));
 		System.out.println(String.format("Unsorted Array is '%s', sorted Array is '%s'", Arrays.toString(unsortedArray), Arrays.toString(sortedArray)));
 		System.out.println(String.format("Sum of Object Array '%s' is %d", Arrays.toString(objArray), objArraySum));
-		System.out.println(String.format("Converting binary number %s to base 10 number is %d", binaryNumberString, intConvertedFromBinary));
+		System.out.println(String.format("Converting binary number %s to base 10 number is %d", binaryNumberString, intConvertedFromBinary1));
 	}
 	
 	@Test                                               
