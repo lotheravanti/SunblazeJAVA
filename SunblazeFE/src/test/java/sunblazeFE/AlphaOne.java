@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
@@ -15,8 +15,6 @@ import java.util.regex.Pattern;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import com.google.common.collect.ObjectArrays;
 
 class AlphaOne {
 
@@ -39,12 +37,16 @@ class AlphaOne {
 	int[] integerArray = {1, 2, 3, 4, 5, 6, 7};
 	String[] stringArray = {"This", "is", "a", "String", "Array."};
 	//List
+	List<Integer> integerList = new ArrayList<Integer>();
 	//Tuple
 	//Set
 	Set<String> hashSet = new HashSet<>();
 	//Use TreeSet for a Sorted Set
 	Set<String> sortedSet = new TreeSet<>();
-	//Dictionary
+	//HashMap, also known as Dictionary in Python, is unordered and values have to be added manually
+	HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
+	//LinkedHashMap will always be ordered by order of entries added
+	LinkedHashMap<String, String> linkHashMap = new LinkedHashMap<String, String>();
 	
 	@BeforeEach                                         
     void setUp() {
@@ -380,7 +382,7 @@ class AlphaOne {
     @DisplayName("Collections")   
     void Collections() {
 		int[] arrayForCollection = {2,6,4,76,2,102,5,17,2};
-	    List<Integer> collectionList = new ArrayList();
+	    List<Integer> collectionList = new ArrayList<Integer>();
 	    //Add an item to Collection
 	    collectionList.add(arrayForCollection[0]);
 	    //Add all items to Collection using add
@@ -411,7 +413,7 @@ class AlphaOne {
 	    	collectionForSum += num;
 	    }
 	    //HashMap Collection
-	    HashMap<Integer, Integer> intHashMap = new HashMap();
+	    HashMap<Integer, Integer> intHashMap = new HashMap<Integer, Integer>();
 	    //Add number and square of number to HashMap using put
 	    for(var num : collectionList) {
 	    	intHashMap.put(num, (int)Math.pow(num, 2));

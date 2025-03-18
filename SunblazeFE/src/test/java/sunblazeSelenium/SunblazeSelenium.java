@@ -1,6 +1,8 @@
 package sunblazeSelenium;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.LinkedHashMap;
+import java.util.List;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -71,6 +73,25 @@ class SunblazeSelenium {
     void inputNumbers() {
     	Inputs inputs = new Inputs(_driver);
     	inputs.FieldSendKeys(inputs.inputNumber, "23");      
+    }
+    
+    @Test                                               
+    @DisplayName("Navigate to Sortable Data Tables")   
+    void sortableDataTables() {
+    	SortableDataTables sortableDataTables = new SortableDataTables(_driver);
+    	//Get table entries in List of LinkedHashMaps format(will always be sorted as it is on the web page)
+    	List<LinkedHashMap<String, String>> initialTable = sortableDataTables.GetTable(sortableDataTables._tblTable1);
+    	//Sort by Last Name Ascending and check if data matches
+    	String sortByValue = "Last Name";
+    	List<LinkedHashMap<String, String>> tableDataSortedAsc = sortableDataTables.TableDataSortedBy(initialTable, sortByValue, true);
+    	sortableDataTables.SortTableBy(sortByValue);
+    	List<LinkedHashMap<String, String>> sortedTableAsc = sortableDataTables.GetTable(sortableDataTables._tblTable1);
+    	assertEquals(tableDataSortedAsc, sortedTableAsc, "Table sorted Ascending successfully");
+    	//Sort by Last Name Descending and check if data matches
+    	List<LinkedHashMap<String, String>> tableDataSortedDesc = sortableDataTables.TableDataSortedBy(initialTable, sortByValue, false);
+    	sortableDataTables.SortTableBy(sortByValue);
+    	List<LinkedHashMap<String, String>> sortedTableDesc = sortableDataTables.GetTable(sortableDataTables._tblTable1);
+    	assertEquals(tableDataSortedDesc, sortedTableDesc, "Table sorted Descending successfully");
     }
     
     //Add a wait at the end of every test for visibility when running manually

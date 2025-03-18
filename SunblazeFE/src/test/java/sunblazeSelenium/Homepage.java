@@ -12,6 +12,7 @@ public class Homepage {
     public By _lnkAddRemove = By.xpath("//a[text()='Add/Remove Elements']");
     public By _lnkDropdown = By.xpath("//a[text()='Dropdown']");
     public By _lnkInputs = By.xpath("//a[text()='Inputs']");
+    public By _lnkSortableDataTables = By.xpath("//a[text()='Sortable Data Tables']");
     //Storing manipulator methods in Homepage class since all others Page classes are derived from it in current framework
     public void ClickOn(By by)
     {
