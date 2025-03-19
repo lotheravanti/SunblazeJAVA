@@ -342,6 +342,11 @@ class AlphaOne {
 		{
 		    forEachString += s;
 		}
+		//Reverse For Loop
+		int[] reverseLoopArray = new int[integerArray.length];
+		for (int i = integerArray.length - 1; i >= 0; i--) {
+		    reverseLoopArray[integerArray.length - i - 1] = integerArray[i];
+		}      
 	    //Count number of matching characters in a String
 	    String matchingString = "We will count the number of vowels";
 	    int countMatchingString = 0;
@@ -356,6 +361,7 @@ class AlphaOne {
 		System.out.println(String.format("%nFor Loops"));
 		System.out.println(String.format("Using Index For Loop to count Array '%s' returns %d", Arrays.toString(integerArray), forLoopCount));
 		System.out.println(String.format("Using Foreach Loop on every element in Array '%s' returns the following String '%s'", String.join(" ", stringArray), forEachString));
+		System.out.println(String.format("Using Reverse For Loop to created Reversed Array: '%s'", Arrays.toString(reverseLoopArray)));
 		System.out.println(String.format("The number of vowels in '%s' is %d", matchingString, countMatchingString));		
 	}
 	
