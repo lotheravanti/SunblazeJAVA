@@ -271,10 +271,21 @@ class AlphaOne {
 	    }
 		//Add all from Array at once
 		Collections.<String>addAll(sortedSet, stringForSetArray);
+		//TreeSets are ideal for representing pangrams(sentences with every letter in alphabet)
+		String pangram = "The quick brown fox jumps over the lazy dog.";
+	    String[] arrPangram = pangram.split("(?<=.)");
+	    Set<String> sortedPangram = new TreeSet<>();
+	    for (var s : arrPangram) {
+	    	// Requires java.util.regex.Pattern;
+	    	if (Pattern.matches("[a-zA-Z]+", s)) {
+	    		sortedPangram.add(s.toLowerCase());
+	    		}
+	    	}
 		
 		System.out.println(String.format("%nSets"));
 		System.out.println(String.format("Unique letters in String '%s' are '%s'", stringForSet, String.join("", hashSet)));
 		System.out.println(String.format("Unique and sorted letters in String '%s' are '%s'", stringForSet, String.join("", sortedSet)));
+		System.out.println(String.format("'%s' is a pangram and contains every letter of the alphabet: %s", pangram, sortedPangram));
 	}
 	
 	@Test                                               

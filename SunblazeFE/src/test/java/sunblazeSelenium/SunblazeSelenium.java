@@ -92,6 +92,8 @@ class SunblazeSelenium {
     	sortableDataTables.SortTableBy(sortByValue);
     	List<LinkedHashMap<String, String>> sortedTableDesc = sortableDataTables.GetTable(sortableDataTables._tblTable1);
     	assertEquals(tableDataSortedDesc, sortedTableDesc, "Table sorted Descending successfully");
+    	//Method for printing items in List of LinkedHashMaps to console
+    	System.out.println(String.format("%s", String.join(", ", sortedTableDesc.toString())));
     }
     
     //Add a wait at the end of every test for visibility when running manually
