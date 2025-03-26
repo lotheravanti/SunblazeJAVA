@@ -4,6 +4,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class Homepage {	
@@ -11,8 +13,10 @@ public class Homepage {
     public By _txtHomePagetitle = By.xpath("//h1[text()='Welcome to the-internet']");
     public By _lnkAddRemove = By.xpath("//a[text()='Add/Remove Elements']");
     public By _lnkDropdown = By.xpath("//a[text()='Dropdown']");
-    public By _lnkInputs = By.xpath("//a[text()='Inputs']");
-    public By _lnkSortableDataTables = By.xpath("//a[text()='Sortable Data Tables']");
+    //Locators can also be defined using FindBy Annotation to be used with PageFactory(requires initialization in constructor)
+    @FindBy(xpath = "//a[text()='Inputs']")
+    public WebElement _lnkInputs;
+    public By _lnkSortableDataTables = By.xpath("//a[text()='Sortable Data Tables']");    
     //Storing manipulator methods in Homepage class since all others Page classes are derived from it in current framework
     public void ClickOn(By by)
     {
@@ -48,5 +52,7 @@ public class Homepage {
     {
         _driver = driver;
         _driver.navigate().to("https://the-internet.herokuapp.com");
+        //Initializing PageFactory for FindBy locators
+        PageFactory.initElements(_driver, this);
     }
 }
