@@ -40,7 +40,7 @@ class AlphaOne {
 	List<Integer> integerList = new ArrayList<Integer>();
 	//Tuple
 	//Set
-	Set<String> hashSet = new HashSet<>();
+	Set<String> stringSet = new HashSet<>();
 	//Use TreeSet for a Sorted Set
 	Set<String> sortedSet = new TreeSet<>();
 	//HashMap, also known as Dictionary in Python, is unordered and values have to be added manually
@@ -263,6 +263,7 @@ class AlphaOne {
     @DisplayName("Set Operations")   
     void Sets() {
 		//Sets don't allow for duplicate items, can be used to get number of unique occurrences
+		Set<String> hashSet = new HashSet<>();
 		String stringForSet = "aretheyhereyestheyarehere";
 		String[] stringForSetArray = stringForSet.split("(?<=.)");
 		//Add one by one from Array
@@ -271,6 +272,14 @@ class AlphaOne {
 	    }
 		//Add all from Array at once
 		Collections.<String>addAll(sortedSet, stringForSetArray);
+		//Sets are good for representing isograms(word with no repeating letters)
+		String isogram = "Dermatoglyphics";
+		String[] arrIsogram = isogram.split("(?<=.)");
+		Set<String> setIsogram = new HashSet<>();
+		for (String st: arrIsogram){
+			setIsogram.add(st.toLowerCase());
+		}
+		boolean isIsogram = arrIsogram.length == setIsogram.size() ? true : false;
 		//TreeSets are ideal for representing pangrams(sentences with every letter in alphabet)
 		String pangram = "The quick brown fox jumps over the lazy dog.";
 	    String[] arrPangram = pangram.split("(?<=.)");
@@ -285,6 +294,7 @@ class AlphaOne {
 		System.out.println(String.format("%nSets"));
 		System.out.println(String.format("Unique letters in String '%s' are '%s'", stringForSet, String.join("", hashSet)));
 		System.out.println(String.format("Unique and sorted letters in String '%s' are '%s'", stringForSet, String.join("", sortedSet)));
+		System.out.println(String.format("'%s' is an isogram and contains no repeating letters: %b", isogram, isIsogram));
 		System.out.println(String.format("'%s' is a pangram and contains every letter of the alphabet: %s", pangram, sortedPangram));
 	}
 	

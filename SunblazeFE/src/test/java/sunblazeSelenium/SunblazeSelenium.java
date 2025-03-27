@@ -69,7 +69,7 @@ class SunblazeSelenium {
     }
     
     @Test                                               
-    @DisplayName("Navigate to Inputs")   
+    @DisplayName("Navigate to Inputs using PageFactory and FindBy")   
     void inputNumbers() {
     	Inputs inputs = new Inputs(_driver);
     	inputs.FieldSendKeys(inputs.inputNumber, "23");      
