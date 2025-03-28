@@ -139,6 +139,10 @@ class AlphaOne {
 		//Check if String is Alphabet
 		String stringAlphabet = "OnLyAlPhAbEt"; 
 		boolean checkAlphabet = Pattern.matches("[a-zA-Z]+",stringAlphabet);
+		//Remove all non-alphabet or non-digit characters using [^'exclude']
+		String stringMixed = "ultr53o?n";
+		String removeDigits = new StringBuilder().append(stringMixed).toString().replaceAll("[^a-z]","");
+		String removeAlphabet = new StringBuilder().append(stringMixed).toString().replaceAll("[^0-9]","");
 		//Verify if String starts or ends with
 		boolean startsWith = message.startsWith("Alpha");
 		boolean endsWith = message.endsWith("Initialized");
@@ -163,6 +167,8 @@ class AlphaOne {
 		System.out.println(String.format("Last 3 characters from '%s' are '%s'", stringValue, lastOfString));
 		System.out.println(String.format("Removing first and last characters from '%s' results in '%s'", stringValue, removeFirstLast));
 		System.out.println(String.format("Remove from '%s' everything that comes after #: '%s'", toRemoveAnchorString, removedAnchorString));
+		System.out.println(String.format("'%s' removing all non-digit characters: %s", stringMixed, removeAlphabet));
+		System.out.println(String.format("'%s' removing all non-alphabet characters: %s", stringMixed, removeDigits));
 		System.out.println(String.format("'%s' contains only alphabet characters: %s", stringAlphabet, checkAlphabet));
 		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));
 		System.out.println(String.format("'%s' is all Upper Case: %b", upperString, isUpper));
