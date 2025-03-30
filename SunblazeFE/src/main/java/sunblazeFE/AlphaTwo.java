@@ -2,9 +2,13 @@ package sunblazeFE;
 
 import java.util.Arrays;
 
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 //Superclass/Base Class
 public class AlphaTwo {
@@ -72,10 +76,27 @@ public class AlphaTwo {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}				
-			}			
-		}		
+				}
+			}
+		}
 	}
+	public static JSONObject getJSON(String filePath) {
+		JSONObject jsonData = null;
+		try {
+			String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
+			//Parse JSON data
+	        jsonData= new JSONObject(jsonString);
+		}
+		catch (IOException e) {
+            System.out.println("Error reading JSON file: " + e.getMessage());
+            e.printStackTrace();
+        }
+		catch (Exception e) {
+            System.out.println("Error parsing JSON: " + e.getMessage());
+            e.printStackTrace();
+        }
+		return jsonData;
+    }
 	
 	//Inner Class can be static in JAVA
 	static class InnerAlphaTwo{

@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -503,11 +504,27 @@ class AlphaOne {
 	@Test                                               
     @DisplayName("Exception Handling using Text File")   
     void TryCatchFinally() {
-		String dataTextFile = AlphaTwo.getTextFile("src/main/resources/Exception Handling.txt");
+		String filePath = "src/main/resources/Exception Handling.txt";
+		String dataTextFile = AlphaTwo.getTextFile(filePath);
 		
 		System.out.println(String.format("%nException Handling"));
-		System.out.println(String.format("%s", dataTextFile));
-		//No file + path provide to trigger Exception
+		System.out.println(String.format("Reading Text File: %s", dataTextFile));
+		//No file + path provided to trigger Exception
 		AlphaTwo.getTextFile("");
+	}
+	
+	@Test                                               
+    @DisplayName("Read JSON file")   
+    void GetJSONFile() {
+		String filePath = "src/main/resources/Resources.json";
+		JSONObject jsonData = AlphaTwo.getJSON(filePath);
+		// Access basic JSON data
+        String name = jsonData.getString("name");
+        int age = jsonData.getInt("age");
+        String email = jsonData.getString("email");
+        boolean isEmployed = jsonData.getBoolean("isEmployed");
+		
+        System.out.println(String.format("%nRead JSON file"));
+		System.out.println(String.format("Reading JSON data: %nname: '%s' age: '%d' email: '%s' isEmployed: '%b'", name, age, email, isEmployed));
 	}
 }
