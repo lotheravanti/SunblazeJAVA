@@ -2,6 +2,10 @@ package sunblazeFE;
 
 import java.util.Arrays;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 //Superclass/Base Class
 public class AlphaTwo {
 	
@@ -42,6 +46,35 @@ public class AlphaTwo {
 	//Method overloading, using same name but differing number of parameters
 	public String ReverseString(String s, String overLoad) {
 		return overLoad + new StringBuilder().append(s).reverse().toString();
+	}
+	//Using File Reader for Exception Handling illustration, especially closing the file
+	public static String getTextFile(String path) {
+		File file = null;
+		FileReader fileReader = null;
+		try {
+			file = new File(path); //file is required for length of char array
+		    fileReader = new FileReader(file);
+			//File Reader requires char array since it reads character by character
+		    char[] fileValueArray = new char[(int)file.length()];
+			fileReader.read(fileValueArray);
+			String fileValueString = new String(fileValueArray);
+			return fileValueString;
+        } 
+		catch (IOException e) {
+            System.err.println(String.format("Could not read data: %s", e.toString()));
+            return null;
+        }
+		// In JAVA File close() requires another Checked Exception
+		finally {
+			if (fileReader != null) {
+				try {
+					fileReader.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+			}			
+		}		
 	}
 	
 	//Inner Class can be static in JAVA

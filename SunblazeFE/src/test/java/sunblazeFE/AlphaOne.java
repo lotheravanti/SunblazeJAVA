@@ -499,4 +499,15 @@ class AlphaOne {
 		System.out.println(String.format("AlphaTwoSub is a Subclass and has inherited SumIntArray from AlphaTwo to sum '%s' resulting in %d", Arrays.toString(_alphaTwo.alphaTwoIntArray), alphaTwoSubIntSum));
 		System.out.println(String.format("AlphaTwoSub's String has been reversed using Base Class' Method: '%s'", _alphaTwoSub.alphaTwoSubString));
 	}
+	
+	@Test                                               
+    @DisplayName("Exception Handling using Text File")   
+    void TryCatchFinally() {
+		String dataTextFile = AlphaTwo.getTextFile("src/main/resources/Exception Handling.txt");
+		
+		System.out.println(String.format("%nException Handling"));
+		System.out.println(String.format("%s", dataTextFile));
+		//No file + path provide to trigger Exception
+		AlphaTwo.getTextFile("");
+	}
 }
