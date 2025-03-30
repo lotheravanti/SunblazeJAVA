@@ -5,10 +5,13 @@ import java.util.Arrays;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 //Superclass/Base Class
 public class AlphaTwo {
@@ -52,19 +55,29 @@ public class AlphaTwo {
 		return overLoad + new StringBuilder().append(s).reverse().toString();
 	}
 	//Using File Reader for Exception Handling illustration, especially closing the file
-	public static String getTextFile(String path) {
+	//Exceptions are Checked(compiler), Unchecked(runtime) and Errors(external to the application: memory, etc)
+	public static String getTextFile(String filePath) {
 		File file = null;
 		FileReader fileReader = null;
 		try {
-			file = new File(path); //file is required for length of char array
+			file = new File(filePath); //file is required for length of char array
 		    fileReader = new FileReader(file);
 			//File Reader requires char array since it reads character by character
 		    char[] fileValueArray = new char[(int)file.length()];
 			fileReader.read(fileValueArray);
+			//Getting file data as String
 			String fileValueString = new String(fileValueArray);
+			//For demonstration purposes, attempting to parse file value as date
+			new SimpleDateFormat("E MMM dd hh:mm yyyy").parse(fileValueString);
 			return fileValueString;
-        } 
-		catch (IOException e) {
+        }
+		catch (FileNotFoundException e) {
+            //Handling errors in order: File not Found > File could not be read
+			System.err.println(String.format("File not found: %s", e.getMessage())); //Printing error message as .err
+            return null;
+        }
+		//Multi-Catch example for file could not be read or incorrect date format
+		catch (IOException | ParseException e) {
             System.err.println(String.format("Could not read data: %s", e.toString()));
             return null;
         }
@@ -88,11 +101,11 @@ public class AlphaTwo {
 	        jsonData= new JSONObject(jsonString);
 		}
 		catch (IOException e) {
-            System.out.println("Error reading JSON file: " + e.getMessage());
+            System.err.println("Error reading JSON file: " + e.getMessage());
             e.printStackTrace();
         }
 		catch (Exception e) {
-            System.out.println("Error parsing JSON: " + e.getMessage());
+            System.err.println("Error parsing JSON: " + e.getMessage());
             e.printStackTrace();
         }
 		return jsonData;

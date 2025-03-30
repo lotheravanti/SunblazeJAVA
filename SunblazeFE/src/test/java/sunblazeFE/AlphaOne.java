@@ -504,13 +504,16 @@ class AlphaOne {
 	@Test                                               
     @DisplayName("Exception Handling using Text File")   
     void TryCatchFinally() {
-		String filePath = "src/main/resources/Exception Handling.txt";
-		String dataTextFile = AlphaTwo.getTextFile(filePath);
+		String filePathCorrectDate = "src/main/resources/Exception Correct Date.txt";
+		String filePathIncorrectDate = "src/main/resources/Exception Incorrect Date.txt";
+		String dataTextFile = AlphaTwo.getTextFile(filePathCorrectDate);
 		
 		System.out.println(String.format("%nException Handling"));
-		System.out.println(String.format("Reading Text File: %s", dataTextFile));
+		System.out.println(String.format("Reading Text File and parsing date: %s", dataTextFile));
 		//No file + path provided to trigger Exception
+		AlphaTwo.getTextFile(filePathIncorrectDate);
 		AlphaTwo.getTextFile("");
+		AlphaTwo.getTextFile("/main/file.txt");
 	}
 	
 	@Test                                               
