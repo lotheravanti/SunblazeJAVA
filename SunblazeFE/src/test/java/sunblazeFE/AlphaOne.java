@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -546,6 +547,7 @@ class AlphaOne {
         int age = jsonData.getInt("age");
         String email = jsonData.getString("email");
         boolean isEmployed = jsonData.getBoolean("isEmployed");
+        JSONArray skills = jsonData.getJSONArray("skills");
         
         JSONObject address = jsonData.getJSONObject("address");
         String street = address.getString("street");
@@ -556,5 +558,6 @@ class AlphaOne {
         System.out.println(String.format("%nRead JSON file"));
 		System.out.println(String.format("Reading JSON root: %nname: '%s' age: '%d' email: '%s' isEmployed: '%b'", name, age, email, isEmployed));
 		System.out.println(String.format("Reading JSON address: %nstreet: '%s' city: '%s' zipCode: '%s'", street, city, zipCode));
+		System.out.println(String.format("Reading JSON skills: %n'%s'", Arrays.asList(skills).toString()));
 	}
 }
