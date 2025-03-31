@@ -178,10 +178,10 @@ class AlphaOne {
 		System.out.println(String.format("'%s' removing all non-digit characters: %s", stringMixed, removeAlphabet));
 		System.out.println(String.format("'%s' removing all non-alphabet characters: %s", stringMixed, removeDigits));
 		System.out.println(String.format("'%s' contains only alphabet characters: %s", stringAlphabet, checkAlphabet));
-		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));
-		System.out.println(String.format("Creating concatenated string from '%s' starting from index 2 and concatenating 4 elements: %s", String.join(", ", toConcatenateList), stringConcatenated));
+		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));		
 		System.out.println(String.format("'%s' is all Upper Case: %b", upperString, isUpper));
 		System.out.println(String.format("'%s' is all Lower Case: %b", lowerString, isLower));
+		System.out.println(String.format("Creating concatenated string from '%s' starting from index 2 and concatenating 4 elements: %s", String.join(", ", toConcatenateList), stringConcatenated));
 		System.out.println(String.format("Breaking down String '%s' and returning all distinct values results in '%s'", stringCharacters, charactersFromStringDistinct));
 		System.out.println(String.format("Breaking down String '%s' and returning sorted values results in '%s'", stringCharacters, charactersFromStringSorted));	
 	}
@@ -265,7 +265,7 @@ class AlphaOne {
 		List<String> arrConcatenate = new ArrayList<String>();
 		for (int i = 0; i < toConcatenateArray.size() - intConcatenate + 1; i++)
 		{
-		    //i for starting range and intConcatenate for end of range
+		    //i for starting range and i + intConcatenate for end of range
 			List<String> toConcatenateSubList = toConcatenateArray.subList(i, i + intConcatenate);
 			String stringConcatenated = String.join("", toConcatenateSubList);
 			arrConcatenate.add(stringConcatenated);
@@ -546,8 +546,15 @@ class AlphaOne {
         int age = jsonData.getInt("age");
         String email = jsonData.getString("email");
         boolean isEmployed = jsonData.getBoolean("isEmployed");
+        
+        JSONObject address = jsonData.getJSONObject("address");
+        String street = address.getString("street");
+        String city = address.getString("city");
+        String zipCode = address.getString("zipCode");
+        
 		
         System.out.println(String.format("%nRead JSON file"));
-		System.out.println(String.format("Reading JSON data: %nname: '%s' age: '%d' email: '%s' isEmployed: '%b'", name, age, email, isEmployed));
+		System.out.println(String.format("Reading JSON root: %nname: '%s' age: '%d' email: '%s' isEmployed: '%b'", name, age, email, isEmployed));
+		System.out.println(String.format("Reading JSON address: %nstreet: '%s' city: '%s' zipCode: '%s'", street, city, zipCode));
 	}
 }
