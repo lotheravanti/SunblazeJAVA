@@ -39,6 +39,8 @@ class AlphaOne {
 	String[] stringArray = {"This", "is", "a", "String", "Array."};
 	//List
 	List<Integer> integerList = new ArrayList<Integer>();
+	//Create a List with values
+	List<String> toConcatenateArray = List.of("one", "two", "three", "four", "five", "six", "seven", "eight");
 	//Tuple
 	//Set
 	Set<String> stringSet = new HashSet<>();
@@ -152,6 +154,11 @@ class AlphaOne {
 		boolean isUpper = upperString.equals(upperString.toUpperCase());
 		String lowerString = "alllower";
 		boolean isLower = lowerString.equals(lowerString.toLowerCase());
+		//Concatenate range from List
+		List<String> toConcatenateList = List.of("zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail");
+		//2 is starting index and 6 is the end of the range, exclusive(index 5 will be last value)
+		List<String> toConcatenateSubList = toConcatenateList.subList(2, 6);
+		String stringConcatenated = String.join("", toConcatenateSubList);
 		//String can be broken down into Characters
 		String stringCharacters = "thisisacharacterstring";
 		//Generate String of unique characters
@@ -172,6 +179,7 @@ class AlphaOne {
 		System.out.println(String.format("'%s' removing all non-alphabet characters: %s", stringMixed, removeDigits));
 		System.out.println(String.format("'%s' contains only alphabet characters: %s", stringAlphabet, checkAlphabet));
 		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));
+		System.out.println(String.format("Creating concatenated string from '%s' starting from index 2 and concatenating 4 elements: %s", String.join(", ", toConcatenateList), stringConcatenated));
 		System.out.println(String.format("'%s' is all Upper Case: %b", upperString, isUpper));
 		System.out.println(String.format("'%s' is all Lower Case: %b", lowerString, isLower));
 		System.out.println(String.format("Breaking down String '%s' and returning all distinct values results in '%s'", stringCharacters, charactersFromStringDistinct));
@@ -251,6 +259,17 @@ class AlphaOne {
 		    binaryNumberString += binaryArray[i];
 		}
 		int intConvertedFromBinary2 = Integer.parseInt(binaryNumberString, 2); //Alternate method
+		//Concatenate each entry N times from existing List
+		List<String> toConcatenateArray = List.of("zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail");
+		int intConcatenate = 3;
+		List<String> arrConcatenate = new ArrayList<String>();
+		for (int i = 0; i < toConcatenateArray.size() - intConcatenate + 1; i++)
+		{
+		    //i for starting range and intConcatenate for end of range
+			List<String> toConcatenateSubList = toConcatenateArray.subList(i, i + intConcatenate);
+			String stringConcatenated = String.join("", toConcatenateSubList);
+			arrConcatenate.add(stringConcatenated);
+		}
 		
 		System.out.println(String.format("%nArrays"));
 		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
@@ -264,6 +283,7 @@ class AlphaOne {
 		System.out.println(String.format("Unsorted Array is '%s', sorted Array is '%s'", Arrays.toString(unsortedArray), Arrays.toString(sortedArray)));
 		System.out.println(String.format("Sum of Object Array '%s' is %d", Arrays.toString(objArray), objArraySum));
 		System.out.println(String.format("Converting binary number %s to base 10 number is %d", binaryNumberString, intConvertedFromBinary1));
+		System.out.println(String.format("Creating a new List from '%s' and concatenating %d times: '%s'", String.join(", ", toConcatenateArray), intConcatenate, String.join(", ", arrConcatenate)));
 	}
 	
 	@Test                                               
