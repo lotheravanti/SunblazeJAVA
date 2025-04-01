@@ -300,6 +300,8 @@ class AlphaOne {
 	    }
 		//Add all from Array at once
 		Collections.<String>addAll(sortedSet, stringForSetArray);
+		//Split String to Set directly
+		Set<String> stringSet = new HashSet<String>(Arrays.asList(stringForSet.split("")));
 		//Sets are good for representing isograms(word with no repeating letters)
 		String isogram = "Dermatoglyphics";
 		String[] arrIsogram = isogram.split("(?<=.)");
@@ -322,6 +324,7 @@ class AlphaOne {
 		System.out.println(String.format("%nSets"));
 		System.out.println(String.format("Unique letters in String '%s' are '%s'", stringForSet, String.join("", hashSet)));
 		System.out.println(String.format("Unique and sorted letters in String '%s' are '%s'", stringForSet, String.join("", sortedSet)));
+		System.out.println(String.format("Splitting String '%s' directly to Set: '[%s']", stringForSet, String.join(", ", stringSet)));
 		System.out.println(String.format("'%s' is an isogram and contains no repeating letters: %b", isogram, isIsogram));
 		System.out.println(String.format("'%s' is a pangram and contains every letter of the alphabet: %s", pangram, sortedPangram));
 	}
@@ -434,8 +437,8 @@ class AlphaOne {
 	}
 	
 	@Test                                               
-    @DisplayName("Collections")   
-    void Collections() {
+    @DisplayName("Lists")   
+    void Lists() {
 		int[] arrayForCollection = {2,6,4,76,2,102,5,17,2};
 	    List<Integer> collectionList = new ArrayList<Integer>();
 	    //Add an item to Collection
@@ -467,7 +470,33 @@ class AlphaOne {
 	    for(var num : collectionList) {
 	    	collectionForSum += num;
 	    }
-	    //HashMap Collection
+	    //Sort List for determining if String is an anagram(same letters) of another
+	    String stringAnagram1 = "Buckethead";
+	    String stringAnagram2 = "DeathCubeK";
+	    List<String> anagramList1 = new ArrayList<String>(Arrays.asList(stringAnagram1.toLowerCase().split("")));
+	    List<String> anagramList2 = new ArrayList<String>(Arrays.asList(stringAnagram2.toLowerCase().split("")));
+	    Collections.sort(anagramList1);
+	    Collections.sort(anagramList2);
+	    boolean isAnagram = anagramList1.equals(anagramList2);
+	    
+		System.out.println(String.format("%nLists"));
+		System.out.println(String.format("The number %d appears %d times in List %s", collectionNumber, collectionOccurrencesInt, String.join(", ", collectionList.toString())));
+		System.out.println(String.format("List is '%s', Sum of List using While loop is %d, using For loop is %d", String.join(", ", collectionList.toString()), collectionWhileSum, collectionForSum));
+		System.out.println(String.format("Using sorted Lists, String '%s' is an anagram of String '%s': %b", stringAnagram1, stringAnagram2, isAnagram ));
+	}
+	
+	@Test                                               
+    @DisplayName("HashMaps")   
+    void HashMaps() {
+		int[] arrayForCollection = {2,6,4,76,2,102,5,17,2};
+	    List<Integer> collectionList = new ArrayList<Integer>();
+	    //Add an item to Collection
+	    collectionList.add(arrayForCollection[0]);
+	    //Add all items to Collection using add
+	    for(var item: arrayForCollection) {
+	    	collectionList.add(item);
+	    }
+	    //HashMap List
 	    HashMap<Integer, Integer> intHashMap = new HashMap<Integer, Integer>();
 	    //Add number and square of number to HashMap using put
 	    for(var num : collectionList) {
@@ -485,12 +514,11 @@ class AlphaOne {
 	    	int intHashMapSumSquaresLambda = 0;
 	    	intHashMapSumSquaresLambda += value;
 	    });
+	    //Sort List for determining if String is an anagram(same letters) of another
 	    
-		System.out.println(String.format("%nCollections"));
-		System.out.println(String.format("The number %d appears %d times in Collection %s", collectionNumber, collectionOccurrencesInt, String.join(", ", collectionList.toString())));
-		System.out.println(String.format("Collection is '%s', Sum of Collection using While loop is %d, using For loop is %d", String.join(", ", collectionList.toString()), collectionWhileSum, collectionForSum));
-		System.out.println(String.format("Collection is '%s', HashMap with Square values is %s", String.join(", ", collectionList.toString()), Collections.singletonList(intHashMap)));
-		System.out.println(String.format("Sum of all Square values in HashMap %s is %d, using Lambda expression %d", Collections.singletonList(intHashMap), intHashMapSumSquares, intHashMapSumSquares));		
+		System.out.println(String.format("%nHashMaps"));
+		System.out.println(String.format("List is '%s', HashMap with Square values is %s", String.join(", ", collectionList.toString()), Collections.singletonList(intHashMap)));
+		System.out.println(String.format("Sum of all Square values in HashMap %s is %d, using Lambda expression %d", Collections.singletonList(intHashMap), intHashMapSumSquares, intHashMapSumSquares));
 	}
 	
 	@Test                                               
