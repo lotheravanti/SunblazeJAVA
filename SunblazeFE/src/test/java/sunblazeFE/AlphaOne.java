@@ -111,9 +111,16 @@ class AlphaOne {
             	reversedUpperLower += Character.toUpperCase(c);
             }
         }
+        //Convert Integer ASCII number to Character
+        int[] intASCIIArray = {56, 57, 58, 59, 60, 61, 62, 63, 64, 65};
+        char[] charASCIIArray =  new char[intASCIIArray.length];
+        for (int i = 0; i < intASCIIArray.length; i++) {
+        	charASCIIArray[i] = (char)intASCIIArray[i];
+        }
 		
         System.out.println(String.format("%nCharacters"));
 		System.out.println(String.format("Switching Upper and Lower case from '%s' is '%s'", reverseUpperLower, reversedUpperLower));
+		System.out.println(String.format("Converting ASCII number codes '%s' to characters '%s'", Arrays.toString(intASCIIArray), Arrays.toString(charASCIIArray)));
 	}
 	
 	@Test                                               
