@@ -295,6 +295,55 @@ class AlphaOne {
 	}
 	
 	@Test                                               
+    @DisplayName("Lists")   
+    void Lists() {
+		int[] arrayForCollection = {2,6,4,76,2,102,5,17,2};
+	    List<Integer> collectionList = new ArrayList<Integer>();
+	    //Add an item to Collection
+	    collectionList.add(arrayForCollection[0]);
+	    //Add all items to Collection using add
+	    for(var item: arrayForCollection) {
+	    	collectionList.add(item);
+	    }
+	    //Get Collection length(Subtract 1 from value to reference last item)
+	    int collectionLength = collectionList.size();
+	    //Get item in Collection by index
+	    int getCollectionItem = collectionList.get(0);
+	    //Remove item in List by index
+	    collectionList.remove(collectionList.size() - 2);
+	    //Remove item in List by value
+	    collectionList.remove(Integer.valueOf(102));
+	    //Count occurrences in List
+	    int collectionNumber = 2;
+	    int collectionOccurrencesInt = Collections.frequency(collectionList, collectionNumber);
+	    //Get the sum of all items in Collection
+	    //Using Iterator and While loop
+	    Iterator<Integer> iterationList = collectionList.iterator();
+	    int collectionWhileSum = 0;
+	    while(iterationList.hasNext()) {
+	    	collectionWhileSum += iterationList.next();
+	    }	    
+	    //Using For Loop
+	    int collectionForSum = 0;
+	    for(var num : collectionList) {
+	    	collectionForSum += num;
+	    }
+	    //Sort List for determining if String is an anagram(same letters) of another
+	    String stringAnagram1 = "Buckethead";
+	    String stringAnagram2 = "DeathCubeK";
+	    List<String> anagramList1 = new ArrayList<String>(Arrays.asList(stringAnagram1.toLowerCase().split("")));
+	    List<String> anagramList2 = new ArrayList<String>(Arrays.asList(stringAnagram2.toLowerCase().split("")));
+	    Collections.sort(anagramList1);
+	    Collections.sort(anagramList2);
+	    boolean isAnagram = anagramList1.equals(anagramList2);
+	    
+		System.out.println(String.format("%nLists"));
+		System.out.println(String.format("The number %d appears %d times in List %s", collectionNumber, collectionOccurrencesInt, String.join(", ", collectionList.toString())));
+		System.out.println(String.format("List is '%s', Sum of List using While loop is %d, using For loop is %d", String.join(", ", collectionList.toString()), collectionWhileSum, collectionForSum));
+		System.out.println(String.format("Using sorted Lists, String '%s' is an anagram of String '%s': %b", stringAnagram1, stringAnagram2, isAnagram ));
+	}
+	
+	@Test                                               
     @DisplayName("Set Operations")   
     void Sets() {
 		//Sets don't allow for duplicate items, can be used to get number of unique occurrences
@@ -334,6 +383,42 @@ class AlphaOne {
 		System.out.println(String.format("Splitting String '%s' directly to Set: '[%s']", stringForSet, String.join(", ", stringSet)));
 		System.out.println(String.format("'%s' is an isogram and contains no repeating letters: %b", isogram, isIsogram));
 		System.out.println(String.format("'%s' is a pangram and contains every letter of the alphabet: %s", pangram, sortedPangram));
+	}
+	
+	@Test                                               
+    @DisplayName("HashMaps(Dictionaries)")   
+    void HashMaps() {
+		int[] arrayForCollection = {2,6,4,76,2,102,5,17,2};
+	    List<Integer> collectionList = new ArrayList<Integer>();
+	    //Add an item to Collection
+	    collectionList.add(arrayForCollection[0]);
+	    //Add all items to Collection using add
+	    for(var item: arrayForCollection) {
+	    	collectionList.add(item);
+	    }
+	    //HashMap List
+	    HashMap<Integer, Integer> intHashMap = new HashMap<Integer, Integer>();
+	    //Add number and square of number to HashMap using put
+	    for(var num : collectionList) {
+	    	intHashMap.put(num, (int)Math.pow(num, 2));
+	    }
+	    //Get sum of all squares in HashMap 
+	    //Using entrySet() both Key and Value can be referenced: getKey(), getValue()
+	    int intHashMapSumSquares = 0;
+	    for(var num : intHashMap.entrySet()) {
+	    	intHashMapSumSquares += num.getValue();
+	    }
+	    //Using Lambda expression, 
+	    //Variable is defined inside Lambda expression
+	    intHashMap.forEach((key, value) -> {
+	    	int intHashMapSumSquaresLambda = 0;
+	    	intHashMapSumSquaresLambda += value;
+	    });
+	    //Sort List for determining if String is an anagram(same letters) of another
+	    
+		System.out.println(String.format("%nHashMaps(Dictionaries)"));
+		System.out.println(String.format("List is '%s', HashMap with Square values is %s", String.join(", ", collectionList.toString()), Collections.singletonList(intHashMap)));
+		System.out.println(String.format("Sum of all Square values in HashMap %s is %d, using Lambda expression %d", Collections.singletonList(intHashMap), intHashMapSumSquares, intHashMapSumSquares));
 	}
 	
 	@Test                                               
@@ -441,91 +526,6 @@ class AlphaOne {
 		
 		System.out.println(String.format("%nWhile Loops"));
 		System.out.println(String.format("The number %d has %d divisors", intDivisors, numberOfDivisors));		
-	}
-	
-	@Test                                               
-    @DisplayName("Lists")   
-    void Lists() {
-		int[] arrayForCollection = {2,6,4,76,2,102,5,17,2};
-	    List<Integer> collectionList = new ArrayList<Integer>();
-	    //Add an item to Collection
-	    collectionList.add(arrayForCollection[0]);
-	    //Add all items to Collection using add
-	    for(var item: arrayForCollection) {
-	    	collectionList.add(item);
-	    }
-	    //Get Collection length(Subtract 1 from value to reference last item)
-	    int collectionLength = collectionList.size();
-	    //Get item in Collection by index
-	    int getCollectionItem = collectionList.get(0);
-	    //Remove item in List by index
-	    collectionList.remove(collectionList.size() - 2);
-	    //Remove item in List by value
-	    collectionList.remove(Integer.valueOf(102));
-	    //Count occurrences in List
-	    int collectionNumber = 2;
-	    int collectionOccurrencesInt = Collections.frequency(collectionList, collectionNumber);
-	    //Get the sum of all items in Collection
-	    //Using Iterator and While loop
-	    Iterator<Integer> iterationList = collectionList.iterator();
-	    int collectionWhileSum = 0;
-	    while(iterationList.hasNext()) {
-	    	collectionWhileSum += iterationList.next();
-	    }	    
-	    //Using For Loop
-	    int collectionForSum = 0;
-	    for(var num : collectionList) {
-	    	collectionForSum += num;
-	    }
-	    //Sort List for determining if String is an anagram(same letters) of another
-	    String stringAnagram1 = "Buckethead";
-	    String stringAnagram2 = "DeathCubeK";
-	    List<String> anagramList1 = new ArrayList<String>(Arrays.asList(stringAnagram1.toLowerCase().split("")));
-	    List<String> anagramList2 = new ArrayList<String>(Arrays.asList(stringAnagram2.toLowerCase().split("")));
-	    Collections.sort(anagramList1);
-	    Collections.sort(anagramList2);
-	    boolean isAnagram = anagramList1.equals(anagramList2);
-	    
-		System.out.println(String.format("%nLists"));
-		System.out.println(String.format("The number %d appears %d times in List %s", collectionNumber, collectionOccurrencesInt, String.join(", ", collectionList.toString())));
-		System.out.println(String.format("List is '%s', Sum of List using While loop is %d, using For loop is %d", String.join(", ", collectionList.toString()), collectionWhileSum, collectionForSum));
-		System.out.println(String.format("Using sorted Lists, String '%s' is an anagram of String '%s': %b", stringAnagram1, stringAnagram2, isAnagram ));
-	}
-	
-	@Test                                               
-    @DisplayName("HashMaps")   
-    void HashMaps() {
-		int[] arrayForCollection = {2,6,4,76,2,102,5,17,2};
-	    List<Integer> collectionList = new ArrayList<Integer>();
-	    //Add an item to Collection
-	    collectionList.add(arrayForCollection[0]);
-	    //Add all items to Collection using add
-	    for(var item: arrayForCollection) {
-	    	collectionList.add(item);
-	    }
-	    //HashMap List
-	    HashMap<Integer, Integer> intHashMap = new HashMap<Integer, Integer>();
-	    //Add number and square of number to HashMap using put
-	    for(var num : collectionList) {
-	    	intHashMap.put(num, (int)Math.pow(num, 2));
-	    }
-	    //Get sum of all squares in HashMap 
-	    //Using entrySet() both Key and Value can be referenced: getKey(), getValue()
-	    int intHashMapSumSquares = 0;
-	    for(var num : intHashMap.entrySet()) {
-	    	intHashMapSumSquares += num.getValue();
-	    }
-	    //Using Lambda expression, 
-	    //Variable is defined inside Lambda expression
-	    intHashMap.forEach((key, value) -> {
-	    	int intHashMapSumSquaresLambda = 0;
-	    	intHashMapSumSquaresLambda += value;
-	    });
-	    //Sort List for determining if String is an anagram(same letters) of another
-	    
-		System.out.println(String.format("%nHashMaps"));
-		System.out.println(String.format("List is '%s', HashMap with Square values is %s", String.join(", ", collectionList.toString()), Collections.singletonList(intHashMap)));
-		System.out.println(String.format("Sum of all Square values in HashMap %s is %d, using Lambda expression %d", Collections.singletonList(intHashMap), intHashMapSumSquares, intHashMapSumSquares));
 	}
 	
 	@Test                                               
