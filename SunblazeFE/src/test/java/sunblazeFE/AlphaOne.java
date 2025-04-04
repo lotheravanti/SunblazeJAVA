@@ -316,14 +316,15 @@ class AlphaOne {
 	    //Count occurrences in List
 	    int collectionNumber = 2;
 	    int collectionOccurrencesInt = Collections.frequency(collectionList, collectionNumber);
-	    //Get the sum of all items in Collection
-	    //Using Iterator and While loop
+	    //Sort a list
+	    Collections.sort(collectionList);
+	    //Get the sum of all items in List using Iterator and While loop
 	    Iterator<Integer> iterationList = collectionList.iterator();
 	    int collectionWhileSum = 0;
 	    while(iterationList.hasNext()) {
 	    	collectionWhileSum += iterationList.next();
 	    }	    
-	    //Using For Loop
+	    //Get the sum of all items in List using For Loop
 	    int collectionForSum = 0;
 	    for(var num : collectionList) {
 	    	collectionForSum += num;
@@ -355,7 +356,17 @@ class AlphaOne {
 	    	hashSet.add(s);
 	    }
 		//Add all from Array at once
-		Collections.<String>addAll(sortedSet, stringForSetArray);
+		Collections.<String>addAll(this.sortedSet, stringForSetArray);
+		//Items in Set cannot be referenced by index, copy to List first
+		int[] intArrayForSet = {99, 2, 2, 23, 19, 10, 1, 3};
+		Set<Integer> treeSetFromArray = new TreeSet();
+		for (int i = 0; i < intArrayForSet.length; i++){
+			treeSetFromArray.add(intArrayForSet[i]);
+	      }
+		List<Integer> listFromSet = new ArrayList();
+		for (int val: treeSetFromArray){
+			listFromSet.add(val);
+		}
 		//Split String to Set directly
 		Set<String> stringSet = new HashSet<String>(Arrays.asList(stringForSet.split("")));
 		//Sets are good for representing isograms(word with no repeating letters)
@@ -379,7 +390,8 @@ class AlphaOne {
 		
 		System.out.println(String.format("%nSets"));
 		System.out.println(String.format("Unique letters in String '%s' are '%s'", stringForSet, String.join("", hashSet)));
-		System.out.println(String.format("Unique and sorted letters in String '%s' are '%s'", stringForSet, String.join("", sortedSet)));
+		System.out.println(String.format("Unique and sorted letters in String '%s' are '%s'", stringForSet, String.join("", this.sortedSet)));
+		System.out.println(String.format("Getting last two values from TreeSet '%s' using a List : %d and %d", String.join("", treeSetFromArray.toString()), listFromSet.get(listFromSet.size() - 1), listFromSet.get(listFromSet.size() - 2)));
 		System.out.println(String.format("Splitting String '%s' directly to Set: '[%s']", stringForSet, String.join(", ", stringSet)));
 		System.out.println(String.format("'%s' is an isogram and contains no repeating letters: %b", isogram, isIsogram));
 		System.out.println(String.format("'%s' is a pangram and contains every letter of the alphabet: %s", pangram, sortedPangram));
