@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
@@ -400,18 +401,27 @@ class AlphaOne {
 	@Test                                               
     @DisplayName("HashMaps(Dictionaries)")   
     void HashMaps() {
-		int[] arrayForCollection = {2,6,4,76,2,102,5,17,2};
-	    List<Integer> collectionList = new ArrayList<Integer>();
-	    //Add an item to Collection
-	    collectionList.add(arrayForCollection[0]);
-	    //Add all items to Collection using add
-	    for(var item: arrayForCollection) {
-	    	collectionList.add(item);
-	    }
-	    //HashMap List
+		//Create new HashMap
+		HashMap<String, Integer> newDict = new HashMap<String, Integer>();
+		//Add items to Dictionary
+		newDict.put("oranges", 4);
+		newDict.put("pears", 1);
+		newDict.put("apple", 2);
+		newDict.put("bananas", 3);
+		//Get value from Dictionary
+		int bananaCount = newDict.get("bananas");
+		//Get entry at index of Dictionary
+		var newDictEntryAtIndex = newDict.entrySet().toArray()[0];
+		//Sort Dictionary by Value
+		HashMap<String, Integer> newDictSortedByValue = newDict.entrySet().stream().sorted(Map.Entry.comparingByValue())
+                .collect(LinkedHashMap::new, (map, entry) -> map.put(entry.getKey(), entry.getValue()), LinkedHashMap::putAll);
+		//Sort Dictionary by Key
+		HashMap<String, Integer> newDictSortedByKey = newDict.entrySet().stream().sorted(Map.Entry.comparingByKey())
+                .collect(LinkedHashMap::new, (map, entry) -> map.put(entry.getKey(), entry.getValue()), LinkedHashMap::putAll);
+		//Add number and square of number from Array to HashMap
+		int[] arrayForHashMap = {2,6,4,76,2,102,5,17,2};
 	    HashMap<Integer, Integer> intHashMap = new HashMap<Integer, Integer>();
-	    //Add number and square of number to HashMap using put
-	    for(var num : collectionList) {
+	    for(var num : arrayForHashMap) {
 	    	intHashMap.put(num, (int)Math.pow(num, 2));
 	    }
 	    //Get sum of all squares in HashMap 
@@ -426,10 +436,13 @@ class AlphaOne {
 	    	int intHashMapSumSquaresLambda = 0;
 	    	intHashMapSumSquaresLambda += value;
 	    });
-	    //Sort List for determining if String is an anagram(same letters) of another
 	    
 		System.out.println(String.format("%nHashMaps(Dictionaries)"));
-		System.out.println(String.format("List is '%s', HashMap with Square values is %s", String.join(", ", collectionList.toString()), Collections.singletonList(intHashMap)));
+		System.out.println(String.format("From '%s' getting the number of bananas: %d", Collections.singletonList(newDict), bananaCount));
+		System.out.println(String.format("From '%s' get entry at Index 0: %s", Collections.singletonList(newDict), newDictEntryAtIndex));
+		System.out.println(String.format("Sorting '%s' by Value: %s", Collections.singletonList(newDict), Collections.singletonList(newDictSortedByValue)));
+		System.out.println(String.format("Sorting '%s' by Key: %s", Collections.singletonList(newDict), Collections.singletonList(newDictSortedByKey)));
+		System.out.println(String.format("Integer Array is '%s', unordered HashMap with Square values is %s", Arrays.toString(arrayForHashMap), Collections.singletonList(intHashMap)));
 		System.out.println(String.format("Sum of all Square values in HashMap %s is %d, using Lambda expression %d", Collections.singletonList(intHashMap), intHashMapSumSquares, intHashMapSumSquares));
 	}
 	
@@ -606,5 +619,11 @@ class AlphaOne {
 		System.out.println(String.format("Reading JSON root: %nname: '%s' age: '%d' email: '%s' isEmployed: '%b'", name, age, email, isEmployed));
 		System.out.println(String.format("Reading JSON address: %nstreet: '%s' city: '%s' zipCode: '%s'", street, city, zipCode));
 		System.out.println(String.format("Reading JSON skills: %n'%s'", Arrays.asList(skills).toString()));
+	}
+	
+	@Test                                               
+    @DisplayName("Exercises")   
+    void Exercises() {
+		System.out.println(String.format("%nExercises"));
 	}
 }
