@@ -91,12 +91,17 @@ class AlphaOne {
 		//Get current quarter of the year
 		int currentMonth = 5;
 		int currentQuarter = (int) Math.ceil(currentMonth / 3.0);
+		//Display number with 2 decimals
+		int dollarAmount = 204;
+		double conversionRate = 6.75;
+		String numTwoDecimals = String.format("%.2f Chinese Yuan", dollarAmount * conversionRate);
 		
 		System.out.println(String.format("%nIntegers"));
 		System.out.println(String.format("Converting String '%s' to Integer: %d", stringNumber, intStringNumber));
 		System.out.println(String.format("%d can be divided by %d a total of %d times", forDivisionInt, divisorInt, divisionResultInt));
 		System.out.println(String.format("%d divided by %d is %g", forDivisionInt, divisorInt, divisionResultDouble));
 		System.out.println(String.format("Current Month %d is in Quarter: %d", currentMonth, currentQuarter));
+		System.out.println(String.format("%d dollars is %s", dollarAmount, numTwoDecimals));
     }
 	
 	@Test                                               
