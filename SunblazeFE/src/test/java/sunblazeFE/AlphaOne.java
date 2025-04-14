@@ -156,6 +156,11 @@ class AlphaOne {
 		//Check if String is Alphabet
 		String stringAlphabet = "OnLyAlPhAbEt"; 
 		boolean checkAlphabet = Pattern.matches("[a-zA-Z]+",stringAlphabet);
+		//Check if String contains any characters other than and also of certain length
+		String matchCharactersString = "regex_34";
+		String noMatchCharactersString = "H 3";
+		boolean matchCharactersBool = matchCharactersString.matches("[a-z0-9_]{4,16}");
+		boolean nomatchCharactersBool = noMatchCharactersString.matches("[a-z0-9_]{4,16}");
 		//Remove all non-alphabet or non-digit characters using [^'exclude']
 		String stringMixed = "ultr53o?n";
 		String removeDigits = new StringBuilder().append(stringMixed).toString().replaceAll("[^a-z]","");
@@ -192,6 +197,8 @@ class AlphaOne {
 		System.out.println(String.format("'%s' removing all non-digit characters: %s", stringMixed, removeAlphabet));
 		System.out.println(String.format("'%s' removing all non-alphabet characters: %s", stringMixed, removeDigits));
 		System.out.println(String.format("'%s' contains only alphabet characters: %s", stringAlphabet, checkAlphabet));
+		System.out.println(String.format("'%s' has length between 4 and 6 and only contains lowercase alphabet,_ and numbers: %b", matchCharactersString, matchCharactersBool));
+		System.out.println(String.format("'%s' has length between 4 and 6 and only contains lowercase alphabet,_ and numbers: %b", noMatchCharactersString, nomatchCharactersBool));
 		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));		
 		System.out.println(String.format("'%s' is all Upper Case: %b", upperString, isUpper));
 		System.out.println(String.format("'%s' is all Lower Case: %b", lowerString, isLower));
