@@ -184,6 +184,14 @@ class AlphaOne {
 		StringBuilder charactersFromStringDistinct = stringCharacters.chars().distinct().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append);
 		//Generate String of sorted characters
 		StringBuilder charactersFromStringSorted = stringCharacters.chars().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append);
+		//Convert alphabet to numbers 1 - 26 and calculate sum
+		String alphabetString = "attitude";
+		int alphabetInt = 0;
+	    for (int i = 0; i < alphabetString.length(); ++i) {
+	      if (alphabetString.charAt(i) >= 'a' && alphabetString.charAt(i) <= 'z') {
+	    	  alphabetInt += (int)alphabetString.charAt(i) - (int)'a' + 1;
+	      }
+	    }
 		
 		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
 		System.out.println(String.format("%nStrings"));
@@ -204,7 +212,8 @@ class AlphaOne {
 		System.out.println(String.format("'%s' is all Lower Case: %b", lowerString, isLower));
 		System.out.println(String.format("Creating concatenated string from '%s' starting from index 2 and concatenating 4 elements: %s", String.join(", ", toConcatenateList), stringConcatenated));
 		System.out.println(String.format("Breaking down String '%s' and returning all distinct values results in '%s'", stringCharacters, charactersFromStringDistinct));
-		System.out.println(String.format("Breaking down String '%s' and returning sorted values results in '%s'", stringCharacters, charactersFromStringSorted));	
+		System.out.println(String.format("Breaking down String '%s' and returning sorted values results in '%s'", stringCharacters, charactersFromStringSorted));
+		System.out.println(String.format("Convert '%s' to numbers 1 - 26 and get sum: %d", alphabetString, alphabetInt));
 	}
 	
 	@Test                                               
@@ -636,6 +645,6 @@ class AlphaOne {
 	@Test                                               
     @DisplayName("Exercises")   
     void Exercises() {
-		System.out.println(String.format("%nExercises"));
+		System.out.println(String.format("%nExercises"));		
 	}
 }
