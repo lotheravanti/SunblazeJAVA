@@ -141,6 +141,13 @@ class AlphaOne {
 		String reverseString = new StringBuilder().append(stringValue).reverse().toString();
 		//Replace part of String
 		String replacedMessage = message.replace("One", "Prime");
+		//Replace only N instances of string
+		String replaceNString = "!!Hello!";
+		int replaceNInt = 2;
+		while (replaceNInt > 0) {
+			replaceNString = replaceNString.replaceFirst("!", "");
+			replaceNInt--;
+		}
 		//Replace multiple characters at once using REGEX
 		String replaceMultiple = "This will be A String wIthoUt all vOwels";
 		String replacedMultiple = replaceMultiple.replaceAll("[aeiouAEIOU]", "");
@@ -156,11 +163,11 @@ class AlphaOne {
 		//Check if String is Alphabet
 		String stringAlphabet = "OnLyAlPhAbEt"; 
 		boolean checkAlphabet = Pattern.matches("[a-zA-Z]+",stringAlphabet);
-		//Check if String contains any characters other than and also of certain length
+		//Check if String contains any characters other than specified combination and also of certain length
 		String matchCharactersString = "regex_34";
 		String noMatchCharactersString = "H 3";
 		boolean matchCharactersBool = matchCharactersString.matches("[a-z0-9_]{4,16}");
-		boolean nomatchCharactersBool = noMatchCharactersString.matches("[a-z0-9_]{4,16}");
+		boolean noMatchCharactersBool = noMatchCharactersString.matches("[a-z0-9_]{4,16}");
 		//Remove all non-alphabet or non-digit characters using [^'exclude']
 		String stringMixed = "ultr53o?n";
 		String removeDigits = new StringBuilder().append(stringMixed).toString().replaceAll("[^a-z]","");
@@ -197,6 +204,7 @@ class AlphaOne {
 		System.out.println(String.format("%nStrings"));
 		System.out.println(String.format("String length for '%s' is %d", stringValue, lengthString));
 		System.out.println(String.format("Reversed String is '%s'", reverseString));
+		System.out.println(String.format("Removing 2 '!' from '!!Hello!' using replaceFirst: '%s'", replaceNString));
 		System.out.println(String.format("Removing all vowels from String '%s' results in: '%s'", replaceMultiple, replacedMultiple));
 		System.out.println(String.format("First character from '%s' is '%s'", stringValue, firstOfString));
 		System.out.println(String.format("Last 3 characters from '%s' are '%s'", stringValue, lastOfString));
@@ -206,7 +214,7 @@ class AlphaOne {
 		System.out.println(String.format("'%s' removing all non-alphabet characters: %s", stringMixed, removeDigits));
 		System.out.println(String.format("'%s' contains only alphabet characters: %s", stringAlphabet, checkAlphabet));
 		System.out.println(String.format("'%s' has length between 4 and 6 and only contains lowercase alphabet,_ and numbers: %b", matchCharactersString, matchCharactersBool));
-		System.out.println(String.format("'%s' has length between 4 and 6 and only contains lowercase alphabet,_ and numbers: %b", noMatchCharactersString, nomatchCharactersBool));
+		System.out.println(String.format("'%s' has length between 4 and 6 and only contains lowercase alphabet,_ and numbers: %b", noMatchCharactersString, noMatchCharactersBool));
 		System.out.println(String.format("%s starts with Alpha: %b and ends with Initialized: %b", replacedMessage, startsWith, endsWith));		
 		System.out.println(String.format("'%s' is all Upper Case: %b", upperString, isUpper));
 		System.out.println(String.format("'%s' is all Lower Case: %b", lowerString, isLower));
@@ -645,6 +653,6 @@ class AlphaOne {
 	@Test                                               
     @DisplayName("Exercises")   
     void Exercises() {
-		System.out.println(String.format("%nExercises"));		
+		System.out.println(String.format("%nExercises"));
 	}
 }
