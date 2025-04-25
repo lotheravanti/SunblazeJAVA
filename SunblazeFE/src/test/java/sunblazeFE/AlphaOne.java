@@ -133,7 +133,9 @@ class AlphaOne {
     @DisplayName("String Operations")   
     void Strings() {
 		String stringValue = "lower case text";
-		//Get length of String
+		//Convert Integer to String
+		String intString = Integer.toString(integer);
+		/////Get length of String
 		int lengthString = message.length();
 		//Convert to Upper Case
 		String upperCase = stringValue.toUpperCase();
@@ -202,6 +204,7 @@ class AlphaOne {
 		
 		//No F String method exists for JAVA, instead the closest thing is String format, %s for String, %d for Integer
 		System.out.println(String.format("%nStrings"));
+		System.out.println(String.format("Converting Integer %d to String: '%s'", integer, intString));
 		System.out.println(String.format("String length for '%s' is %d", stringValue, lengthString));
 		System.out.println(String.format("Reversed String is '%s'", reverseString));
 		System.out.println(String.format("Removing 2 '!' from '!!Hello!' using replaceFirst: '%s'", replaceNString));
