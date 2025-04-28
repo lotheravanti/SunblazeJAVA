@@ -4,6 +4,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -45,6 +46,23 @@ class SunblazeSeleniumTestNGSuiteB {
     void inputNumbers(@Optional("23") String inputValue) {
     	Inputs inputs = new Inputs(_driver);
     	inputs.FieldSendKeys(inputs.inputNumber, inputValue);      
+    }
+    
+    //Use a Data Provider to run the test multiple times with the specified values
+    @Test(dataProvider = "inputNumbersDataProvider")
+    void inputNumbersDataProvide(String inputValue) {
+    	Inputs inputs = new Inputs(_driver);
+    	inputs.FieldSendKeys(inputs.inputNumber, inputValue);      
+    }
+    
+    //Two Dimensional Object array, tests will run each time using each Object as parameter(s)
+    @DataProvider(name = "inputNumbersDataProvider")
+    public static Object[][] inputNumbersDataProvider() {
+    	return new Object[][] {
+    			new Object[]{"41"},
+    			new Object[]{"110"},
+    			new Object[]{"92342761135"}
+    	};
     }
     
     //Add a wait at the end of every test for visibility when running manually
