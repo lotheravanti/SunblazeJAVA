@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Sunblaze">
+  <!--Running tests in parallel at class level-->
+  <test name="SunblazeSelenium" parallel="classes" preserve-order="true">
+  <!--Using custom parameters for tests(default value is specified in Method definition)-->
+  <parameter name="timesClick" value="5"></parameter>
+  <parameter name="inputValue" value="521"></parameter>
+    <classes>
+      <class name="sunblazeSelenium.SunblazeSeleniumTestNGSuiteA">
+      	<!--Selecting specific Tests(Methods) to run-->
+      	<methods>
+      		<include name="addRemove" />
+      		<include name="selectFromDropdown"/>
+      	</methods>
+      </class>
+      <class name="sunblazeSelenium.SunblazeSeleniumTestNGSuiteB"/>
+    </classes>
+  </test>
+</suite>
