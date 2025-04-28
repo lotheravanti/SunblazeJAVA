@@ -8,6 +8,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import parameters.inputNumbersData;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -55,6 +58,13 @@ class SunblazeSeleniumTestNGSuiteB {
     	inputs.FieldSendKeys(inputs.inputNumber, inputValue);      
     }
     
+    //Using Object instance of Class as schema to pass parameters for test(with Getters)
+    @Test(dataProvider = "inputNumbersDataProviderClass")
+    void inputNumbersDataProvideClass(inputNumbersData inputNumbersData) {
+    	Inputs inputs = new Inputs(_driver);
+    	inputs.FieldSendKeys(inputs.inputNumber, inputNumbersData.getInputNumbersValue());      
+    }
+    
     //Two Dimensional Object array, tests will run each time using each Object as parameter(s)
     @DataProvider(name = "inputNumbersDataProvider")
     public static Object[][] inputNumbersDataProvider() {
@@ -62,6 +72,16 @@ class SunblazeSeleniumTestNGSuiteB {
     			new Object[]{"41"},
     			new Object[]{"110"},
     			new Object[]{"92342761135"}
+    	};
+    }
+    
+    //Data Provider using Class as schema
+    @DataProvider(name = "inputNumbersDataProviderClass")
+    public static inputNumbersData[] inputNumbersDataProviderClass() {
+    	return new inputNumbersData[] {
+    			new inputNumbersData("91"),
+    			new inputNumbersData("487812"),
+    			new inputNumbersData("823")
     	};
     }
     
