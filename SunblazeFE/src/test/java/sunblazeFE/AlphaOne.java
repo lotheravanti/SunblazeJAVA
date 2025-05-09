@@ -153,6 +153,8 @@ class AlphaOne {
 		//Replace multiple characters at once using REGEX
 		String replaceMultiple = "This will be A String wIthoUt all vOwels";
 		String replacedMultiple = replaceMultiple.replaceAll("[aeiouAEIOU]", "");
+		//Add a character N times to a String
+		String fiveStars = new String(new char[5]).replace("\0", "*");
 		//Get first N characters of a String
 		String firstOfString = stringValue.substring(0,1);
 		//Get last N characters of a String
@@ -209,6 +211,7 @@ class AlphaOne {
 		System.out.println(String.format("Reversed String is '%s'", reverseString));
 		System.out.println(String.format("Removing 2 '!' from '!!Hello!' using replaceFirst: '%s'", replaceNString));
 		System.out.println(String.format("Removing all vowels from String '%s' results in: '%s'", replaceMultiple, replacedMultiple));
+		System.out.println(String.format("Generating strings with 5 times the character *: '%s'", fiveStars));
 		System.out.println(String.format("First character from '%s' is '%s'", stringValue, firstOfString));
 		System.out.println(String.format("Last 3 characters from '%s' are '%s'", stringValue, lastOfString));
 		System.out.println(String.format("Removing first and last characters from '%s' results in '%s'", stringValue, removeFirstLast));
