@@ -314,6 +314,27 @@ class AlphaOne {
 			String stringConcatenated = String.join("", toConcatenateSubList);
 			arrConcatenate.add(stringConcatenated);
 		}
+		//Check left and right of index in an Array for condition
+				int[] arrCheckLeftRight = new int[] {1,2,3,4,3,2,1};
+				int checkSumLeft = 0;
+				int checkSumRight = 0;
+				int indexCheckLeftRight = -1;
+			    for (int i = 0;i < arrCheckLeftRight.length;i++){
+			      int[] arrCheckLeft = i == 0 ? new int[0] : new int[i];
+			      for (int j = 0;j < arrCheckLeft.length;j++){
+			    	  arrCheckLeft[j] = arrCheckLeftRight[j];
+			    	  checkSumLeft = Arrays.stream(arrCheckLeft).sum();
+			      }
+			      int[] arrCheckRight = i == arrCheckLeftRight.length ? new int[arrCheckLeftRight.length - 1] : new int[arrCheckLeftRight.length - i - 1];
+			      for (int k = 0;k < arrCheckRight.length;k++){
+			    	  arrCheckRight[k] = arrCheckLeftRight[i + k + 1];
+			    	  checkSumRight = Arrays.stream(arrCheckRight).sum();
+			      }
+			      if (checkSumLeft == checkSumRight){
+			    	  indexCheckLeftRight = i;
+			    	  break;
+			      }
+			    }
 		
 		System.out.println(String.format("%nArrays"));
 		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
@@ -328,6 +349,7 @@ class AlphaOne {
 		System.out.println(String.format("Sum of Object Array '%s' is %d", Arrays.toString(objArray), objArraySum));
 		System.out.println(String.format("Converting binary number %s to base 10 number is %d", binaryNumberString, intConvertedFromBinary1));
 		System.out.println(String.format("Creating a new List from '%s' and concatenating %d times: '%s'", String.join(", ", toConcatenateArray), intConcatenate, String.join(", ", arrConcatenate)));
+		System.out.println(String.format("Finding index of Array %s where sum of subarray left of it %d equals sum of subarray right of it %d, index is %d", Arrays.toString(arrCheckLeftRight), checkSumLeft, checkSumRight, indexCheckLeftRight));
 	}
 	
 	@Test                                               
