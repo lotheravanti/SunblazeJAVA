@@ -260,7 +260,6 @@ class AlphaOne {
 		        occurrencesInArrayCount += 1;
 		    }
 		}
-		System.out.println(occurrencesInArrayCount);
 		//Split Integer into Integer Array
 		int intForArray = 1234567;
 	    int[] intToArray = Integer.toString(intForArray).chars().map(c -> c-'0').toArray();
@@ -315,26 +314,26 @@ class AlphaOne {
 			arrConcatenate.add(stringConcatenated);
 		}
 		//Check left and right of index in an Array for condition
-				int[] arrCheckLeftRight = new int[] {1,2,3,4,3,2,1};
-				int checkSumLeft = 0;
-				int checkSumRight = 0;
-				int indexCheckLeftRight = -1;
-			    for (int i = 0;i < arrCheckLeftRight.length;i++){
-			      int[] arrCheckLeft = i == 0 ? new int[0] : new int[i];
-			      for (int j = 0;j < arrCheckLeft.length;j++){
-			    	  arrCheckLeft[j] = arrCheckLeftRight[j];
-			    	  checkSumLeft = Arrays.stream(arrCheckLeft).sum();
-			      }
-			      int[] arrCheckRight = i == arrCheckLeftRight.length ? new int[arrCheckLeftRight.length - 1] : new int[arrCheckLeftRight.length - i - 1];
-			      for (int k = 0;k < arrCheckRight.length;k++){
-			    	  arrCheckRight[k] = arrCheckLeftRight[i + k + 1];
-			    	  checkSumRight = Arrays.stream(arrCheckRight).sum();
-			      }
-			      if (checkSumLeft == checkSumRight){
-			    	  indexCheckLeftRight = i;
-			    	  break;
-			      }
-			    }
+		int[] arrCheckLeftRight = new int[] {1,2,3,4,3,2,1};
+		int checkSumLeft = 0;
+		int checkSumRight = 0;
+		int indexCheckLeftRight = -1;
+	    for (int i = 0;i < arrCheckLeftRight.length;i++){
+	      int[] arrCheckLeft = i == 0 ? new int[0] : new int[i];
+	      for (int j = 0;j < arrCheckLeft.length;j++){
+	    	  arrCheckLeft[j] = arrCheckLeftRight[j];
+	    	  checkSumLeft = Arrays.stream(arrCheckLeft).sum();
+	      }
+	      int[] arrCheckRight = i == arrCheckLeftRight.length ? new int[arrCheckLeftRight.length - 1] : new int[arrCheckLeftRight.length - i - 1];
+	      for (int k = 0;k < arrCheckRight.length;k++){
+	    	  arrCheckRight[k] = arrCheckLeftRight[i + k + 1];
+	    	  checkSumRight = Arrays.stream(arrCheckRight).sum();
+	      }
+	      if (checkSumLeft == checkSumRight){
+	    	  indexCheckLeftRight = i;
+	    	  break;
+	      }
+	    }
 		
 		System.out.println(String.format("%nArrays"));
 		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
