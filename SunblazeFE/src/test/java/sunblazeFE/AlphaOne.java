@@ -246,9 +246,15 @@ class AlphaOne {
 		String[] arrayFromString = stringToArray.split(" ");
 		//Generate String from Array with delimiter
 		String joinedStringArray = String.join(" ", stringArray);
-		//In JAVA use .clone() to create a new variable, otherwise the original will be affected
+		//Reverse Array requires .clone() in JAVA otherwise the original will be affected
 		String[] reverseArray = stringArray.clone();
 		Collections.reverse(Arrays.asList(reverseArray));
+		//Compare if two Arrays are equal
+		int[] equalArray1 = new int[] { 1, 2, 3, 4 };
+		int[] equalArray2 = new int[] { 1, 2, 3, 4 };
+		int[] equalArray3 = new int[] { 1, 2, 5, 4 };
+		boolean equalsArr1Arr2 = Arrays.equals(equalArray1, equalArray2);
+		boolean equalsArr1Arr3 = Arrays.equals(equalArray1, equalArray3);
 		//Count occurrences in Array
 		String[] occurrencesArray = {"a", "a", "b", "c", "d", "d", "e", "e", "f", "x", "x", "y", "y", "z"};
 		String[] occurrencesInArray = {"x", "y", "z"};
@@ -339,6 +345,8 @@ class AlphaOne {
 		System.out.println(String.format("Split String '%s' into Array '%s'", stringToArray, Arrays.toString(arrayFromString)));
 		System.out.println(String.format("String from joined Array is '%s'", joinedStringArray));
 		System.out.println(String.format("For '%s', Reversed Array is '%s'", String.join(", ", stringArray), String.join(", ", reverseArray)));
+		System.out.println(String.format("Array '%s' is equal to Array '%s': %b", Arrays.toString(equalArray1), Arrays.toString(equalArray2), equalsArr1Arr2));
+		System.out.println(String.format("Array '%s' is equal to Array '%s': %b", Arrays.toString(equalArray1), Arrays.toString(equalArray3), equalsArr1Arr3));
 		System.out.println(String.format("The characters '%s' appear in '%s' a total of %d times", String.join(", ", occurrencesInArray), String.join(", ", occurrencesArray), occurrencesInArrayCount));
 		System.out.println(String.format("Split %d to Int Array '%s'", intForArray, Arrays.toString(intToArray)));
 		System.out.println(String.format("Split '%s' to Int Array '%s'", stringInt, Arrays.toString(stringToIntArray)));
